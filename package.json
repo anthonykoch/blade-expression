@@ -25,22 +25,23 @@
   "author": "anthonykoch",
   "license": "MIT",
   "dependencies": {
-    "object-assign": "^4.1.0",
-    "pad-start": "^1.0.2",
-    "repeat-string": "^1.5.4"
+    "object-assign": "4.1.x",
+    "pad-start": "1.0.x",
+    "repeat-string": "1.5.x"
   },
   "devDependencies": {
-    "acorn": "^4.0.3",
-    "babel-core": "^6.17.0",
-    "babel-loader": "^6.2.5",
-    "babel-plugin-transform-es2015-unicode-regex": "^6.11.0",
-    "babel-preset-es2015": "^6.16.0",
-    "babili": "0.0.7",
-    "glob": "^7.0.3",
-    "tap-diff": "^0.1.1",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.2",
-    "webpack": "^1.13.2",
-    "yargs": "^6.0.0"
+    "acorn": "4.0.x",
+    "babel-core": "6.17.x",
+    "babel-loader": "6.2.x",
+    "babel-plugin-transform-es2015-unicode-regex": "6.11.x",
+    "babel-preset-es2015": "6.16.x",
+    "babili": "0.0.x",
+    "glob": "7.0.x",
+    "tap-diff": "0.1.x",
+    "tap-spec": "4.1.x",
+    "tape": "4.6.x",
+    "webpack": "1.13.x",
+    "yamlhead": "0.2.x",
+    "yargs": "6.0.x"
   }
 }
