@@ -4,10 +4,8 @@ const path = require('path');
 
 const glob = require('glob');
 
-require('./cases');
-
 glob
-    .sync('./**/*.spec.js')
+    .sync(path.join(__dirname, './**/*.spec.js'))
     .forEach(file => {
         require(path.resolve(file));
     });

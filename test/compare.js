@@ -69,7 +69,7 @@ function compare(pattern, options) {
     const regext = new RegExp(`.${comparatorExt}$`)
     const files =
         glob
-            .sync(pattern, { absolute: true, exclude })
+            .sync(pattern, { exclude })
             .filter(file => regext.test(file));
 
     let stop = false;

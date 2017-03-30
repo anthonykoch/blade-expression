@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
 
 const acorn = require('acorn');
 
@@ -15,7 +16,7 @@ const Lexer = require('../lib/lexer');
         }
     }
 ].map(({ options: opts }) => {
-    compare('./cases/lexer/**/*', {
+    compare(path.join(__dirname, './cases/lexer/**/*'), {
         prefix: 'Lexer - ',
         transform: {
             data: ({ data, header }) => {
@@ -37,7 +38,7 @@ const Lexer = require('../lib/lexer');
         }
     }
 ].map(({ options: opts }) => {
-    compare('./cases/parser/**/*', {
+    compare(path.join(__dirname, './cases/parser/**/*'), {
         prefix: 'Parser - ',
         transform: {
             data: ({ data, header }) => {
@@ -55,7 +56,7 @@ const Lexer = require('../lib/lexer');
 // TODO: acorn compare
 
 // [{}].map(({ options: opts }) => {
-//     compare('./cases/parser/nodes/ArrayExpression/**/*', {
+//     compare(path.join(__dirname, './cases/parser/nodes/ArrayExpression/**/*'), {
 //         prefix: 'Acorn - ',
 //         exclude: ['./cases/parser/features/**/*'],
 //         error: ['message', 'line', 'column'],
