@@ -62,6 +62,8 @@ const DistMinLexer = require('../../dist/bladeexp.min.js').Lexer;
         t.equals(lexer.stash[1].value, '+',        'second token');
         t.equals(lexer.stash[2].value, 'greeting', 'third token');
 
+        t.throws(() => lexer.lookahead(-1), /Lookahead index can not be less than 0/);
+
         t.end();
     });
 
