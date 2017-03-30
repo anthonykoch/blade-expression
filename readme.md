@@ -3,7 +3,9 @@
 
 A parser for JavaScript expressions created according to the [ES6 specification](http://www.ecma-international.org/ecma-262/6.0/#sec-expressions). The AST nodes are modeled after the [SpiderMonkey Parser spec](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Parser_API) aside from how locations are stored.
 
-Weighs in at `25.57 kB` minified and `8.25 kB` gzipped.
+# Size
+
+Weighs in at `26KB` minified and `8.5 kB` gzipped.
 
 
 # Usage
