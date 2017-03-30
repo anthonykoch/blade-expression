@@ -9,21 +9,21 @@ const DistParser = require('../../dist/bladeexp.js');
 const DistMinParser = require('../../dist/bladeexp.min.js');
 
 [Parser, DistParser, DistMinParser].map(Parser => {
-    test('Parser.parse', (assert) => {
+    test('Parser.parse', t => {
         const actual = Parser.parse('id');
-        assert.equals(actual.type, 'Program');
-        assert.throws(() => Parser.parse(), /./, 'parse throws without passing a string');
-        assert.end();
+        t.equals(actual.type, 'Program');
+        t.throws(() => Parser.parse(), /./, 'parse throws without passing a string');
+        t.end();
     });
 
-    test('Parser.create', (assert) => {
+    test('Parser.create', t => {
         const parser = Parser.create(`'Hello'`);
-        assert.equals(typeof parser, 'object');
-        assert.throws(() => Parser.create(), /of undefined/, 'create throws without passing a string');
-        assert.end();
+        t.equals(typeof parser, 'object');
+        t.throws(() => Parser.create(), /of undefined/, 'create throws without passing a string');
+        t.end();
     });
 
-    test('parser.parse', (assert) => {
+    test('parser.parse', t => {
         const data = `'Hello'`;
         const parser = Parser.create(data);
         const ast = {
@@ -43,12 +43,12 @@ const DistMinParser = require('../../dist/bladeexp.min.js');
             ]
         };
 
-        assert.equals(typeof parser, 'object');
-        assert.deepEquals(parser.parse(), ast, 'returns an ast');
-        assert.end();
+        t.equals(typeof parser, 'object');
+        t.deepEquals(parser.parse(), ast, 'returns an ast');
+        t.end();
     });
 
-    test('parser.nextToken', (assert) => {
+    test('parser.nextToken', t => {
         const data = `user`;
         const parser = Parser.create(data);
 
@@ -61,11 +61,11 @@ const DistMinParser = require('../../dist/bladeexp.min.js');
             end: 4,
         };
 
-        assert.deepEquals(parser.nextToken(), token);
-        assert.end();
+        t.deepEquals(parser.nextToken(), token);
+        t.end();
     });
 
-    test('parser.peek', (assert) => {
+    test('parser.peek', t => {
         const data = `user`;
         const parser = Parser.create(data);
 
@@ -78,15 +78,15 @@ const DistMinParser = require('../../dist/bladeexp.min.js');
             end: 4,
         };
 
-        assert.deepEquals(parser.peek(), token);
-        assert.end();
+        t.deepEquals(parser.peek(), token);
+        t.end();
     });
 
-    test('parser.ensure', (assert) => {
+    test('parser.ensure', t => {
         const data = `'Hello ' + user.name + 'my name is ' + name`;
         const parser = Parser.create(data);
 
-        assert.deepEquals(parser.ensure(3), {
+        t.deepEquals(parser.ensure(3), {
             type: TokenIdentifier,
             value: 'user',
             line: 1,
@@ -95,20 +95,20 @@ const DistMinParser = require('../../dist/bladeexp.min.js');
             end: 15
         });
 
-        assert.doesNotThrow(() => parser.ensure(9));
-        assert.throws(() => parser.ensure(10));
+        t.doesNotThrow(() => parser.ensure(9));
+        t.throws(() => parser.ensure(10));
 
-        assert.end();
+        t.end();
     });
 
-    test('parser.expect', (assert) => {
+    test('parser.expect', t => {
         const data = `'Hello ' + user.name + 'my name is ' + name`;
         const parser = Parser.create(data);
 
         parser.nextToken();
         parser.nextToken();
 
-        assert.deepEquals(parser.expect('user'), {
+        t.deepEquals(parser.expect('user'), {
             type: TokenIdentifier,
             value: 'user',
             line: 1,
@@ -117,63 +117,63 @@ const DistMinParser = require('../../dist/bladeexp.min.js');
             end: 15
         }, 'expect identifier');
 
-        assert.throws(() => parser.expect('user'), /Unexpected token "\."/, 'expect throws if token does not have the value');
+        t.throws(() => parser.expect('user'), /Unexpected token "\."/, 'expect throws if token does not have the value');
 
-        assert.end();
+        t.end();
     });
 
-    test('parser.peek', (assert) => {
+    test('parser.peek', t => {
         const data = `user.name`;
         const parser = Parser.create(data);
 
-        assert.deepEquals(parser.peek().value, 'user', 'peek returns next token');
+        t.deepEquals(parser.peek().value, 'user', 'peek returns next token');
 
-        assert.deepEquals(parser.peek().value, 'user', 'peek does not consume token');
+        t.deepEquals(parser.peek().value, 'user', 'peek does not consume token');
 
-        assert.doesNotThrow(() => {
+        t.doesNotThrow(() => {
             for (let i = 0; i < 20; i++) {
                 parser.peek();
                 parser.nextToken();
             }
         }, 'peek never throws');
 
-        assert.end();
+        t.end();
     });
 
-    test('parser.match', (assert) => {
+    test('parser.match', t => {
         const data = `user.name`;
         const parser = Parser.create(data);
 
-        assert.ok(parser.match('user'), 'matches identifier');
+        t.ok(parser.match('user'), 'matches identifier');
 
         parser.nextToken();
-        assert.ok(parser.match('.'), 'matches identifier');
+        t.ok(parser.match('.'), 'matches identifier');
 
-        assert.notOk(parser.match('user'));
+        t.notOk(parser.match('user'));
 
-        assert.end();
+        t.end();
     });
 
-    test('parser.matches', (assert) => {
+    test('parser.matches', t => {
         const data = `user.name`;
         const parser = Parser.create(data);
 
-        assert.ok(parser.matches('user', '.'));
-        assert.notOk(parser.matches('user.'));
+        t.ok(parser.matches('user', '.'));
+        t.notOk(parser.matches('user.'));
 
         parser.nextToken();
-        assert.ok(parser.matches('.', 'name'));
+        t.ok(parser.matches('.', 'name'));
 
-        assert.end();
+        t.end();
     });
 
-    test('parser.source', (assert) => {
+    test('parser.source', t => {
         const data = `user.name`;
         const parser = Parser.create(data);
 
-        assert.ok(parser.source === parser.lexer.source);
-        assert.ok(data === parser.lexer.source);
+        t.ok(parser.source === parser.lexer.source);
+        t.ok(data === parser.lexer.source);
 
-        assert.end();
+        t.end();
     });
 });

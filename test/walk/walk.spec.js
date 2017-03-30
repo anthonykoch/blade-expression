@@ -7,83 +7,83 @@ const test = require('tape');
 const { parse } = require('../../lib/parser');
 const { walk } = require('../../lib/walk');
 
-test('walk Literal', (assert) => {
-    assert.plan(1);
+test('walk Literal', t => {
+    t.plan(1);
 
     const data = `123`;
     const ast = parse(data);
 
     walk(ast, {
         Literal() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk Identifier', (assert) => {
-    assert.plan(1);
+test('walk Identifier', t => {
+    t.plan(1);
 
     const data = `user`;
     const ast = parse(data);
 
     walk(ast, {
         Identifier() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk SpreadElement', (assert) => {
-    assert.plan(1);
+test('walk SpreadElement', t => {
+    t.plan(1);
 
     const data = `[...users]`;
     const ast = parse(data);
 
     walk(ast, {
         SpreadElement() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk ThisExpression', (assert) => {
-    assert.plan(1);
+test('walk ThisExpression', t => {
+    t.plan(1);
 
     const data = `this`;
     const ast = parse(data);
 
     walk(ast, {
         ThisExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk SequenceExpression', (assert) => {
-    assert.plan(1);
+test('walk SequenceExpression', t => {
+    t.plan(1);
 
     const data = `123, 456`;
     const ast = parse(data);
 
     walk(ast, {
         SequenceExpression(node) {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk Identifiers of SequenceExpression', (assert) => {
-    assert.plan(2);
+test('walk Identifiers of SequenceExpression', t => {
+    t.plan(2);
 
     const data = `hello, user`;
     const ast = parse(data);
@@ -91,14 +91,14 @@ test('walk Identifiers of SequenceExpression', (assert) => {
 
     walk(ast, {
         SequenceExpression(node) {
-            assert.ok(true);
+            t.ok(true);
         },
         Identifier(node) {
             expressions.push(node);
         }
     });
 
-    assert.deepEquals(expressions, [
+    t.deepEquals(expressions, [
         {
             type: 'Identifier',
             name: 'hello',
@@ -113,252 +113,252 @@ test('walk Identifiers of SequenceExpression', (assert) => {
         }
     ], 'Items are added in order');
 
-    assert.end();
+    t.end();
 });
 
-test('walk NewExpression', (assert) => {
-    assert.plan(1);
+test('walk NewExpression', t => {
+    t.plan(1);
 
     const data = `new User`;
     const ast = parse(data);
 
     walk(ast, {
         NewExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk CallExpression', (assert) => {
-    assert.plan(1);
+test('walk CallExpression', t => {
+    t.plan(1);
 
     const data = `user()`;
     const ast = parse(data);
 
     walk(ast, {
         CallExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk MemberExpression', (assert) => {
-    assert.plan(1);
+test('walk MemberExpression', t => {
+    t.plan(1);
 
     const data = `user.name`;
     const ast = parse(data);
 
     walk(ast, {
         MemberExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk YieldExpression', (assert) => {
-    assert.plan(1);
+test('walk YieldExpression', t => {
+    t.plan(1);
 
     const data = `yield user`;
     const ast = parse(data, { context: { inGenerator: true }});
 
     walk(ast, {
         YieldExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk ArrayExpression', (assert) => {
-    assert.plan(1);
+test('walk ArrayExpression', t => {
+    t.plan(1);
 
     const data = `[]`;
     const ast = parse(data);
 
     walk(ast, {
         ArrayExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk Property', (assert) => {
-    assert.plan(1);
+test('walk Property', t => {
+    t.plan(1);
 
     const data = `{ name }`;
     const ast = parse(data);
 
     walk(ast, {
         Property() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk ObjectExpression', (assert) => {
-    assert.plan(1);
+test('walk ObjectExpression', t => {
+    t.plan(1);
 
     const data = `{}`;
     const ast = parse(data);
 
     walk(ast, {
         ObjectExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk UpdateExpression', (assert) => {
-    assert.plan(1);
+test('walk UpdateExpression', t => {
+    t.plan(1);
 
     const data = `user.id++`;
     const ast = parse(data);
 
     walk(ast, {
         UpdateExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk UnaryExpression', (assert) => {
-    assert.plan(1);
+test('walk UnaryExpression', t => {
+    t.plan(1);
 
     const data = `-user.id`;
     const ast = parse(data);
 
     walk(ast, {
         UnaryExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk LogicalExpression', (assert) => {
-    assert.plan(1);
+test('walk LogicalExpression', t => {
+    t.plan(1);
 
     const data = `1 || 2`;
     const ast = parse(data);
 
     walk(ast, {
         LogicalExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk BinaryExpression', (assert) => {
-    assert.plan(1);
+test('walk BinaryExpression', t => {
+    t.plan(1);
 
     const data = `1 + 1`;
     const ast = parse(data);
 
     walk(ast, {
         BinaryExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk ArrowExpression', (assert) => {
-    assert.plan(1);
+test('walk ArrowExpression', t => {
+    t.plan(1);
 
     const data = `user => 123`;
     const ast = parse(data);
 
     walk(ast, {
         ArrowExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk ConditionalExpression', (assert) => {
-    assert.plan(1);
+test('walk ConditionalExpression', t => {
+    t.plan(1);
 
     const data = `(user) ? 1 : 0`;
     const ast = parse(data);
 
     walk(ast, {
         ConditionalExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk AssignmentExpression', (assert) => {
-    assert.plan(1);
+test('walk AssignmentExpression', t => {
+    t.plan(1);
 
     const data = `name = 'Randall'`;
     const ast = parse(data);
 
     walk(ast, {
         AssignmentExpression() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk ExpressionStatement', (assert) => {
-    assert.plan(1);
+test('walk ExpressionStatement', t => {
+    t.plan(1);
 
     const data = `123`;
     const ast = parse(data);
 
     walk(ast, {
         ExpressionStatement() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
-test('walk Program', (assert) => {
-    assert.plan(1);
+test('walk Program', t => {
+    t.plan(1);
 
     const data = `123`;
     const ast = parse(data);
 
     walk(ast, {
         Program() {
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.end();
+    t.end();
 });
 
 // FIXME
-test.skip('walk complex ast', (assert) => {
-    assert.plan(37);
+test.skip('walk complex ast', t => {
+    t.plan(37);
 
     const data = `this.name = yield name, user.id * users[index] + new User()
                     || isValid([...users], (item) => -item++) ? { name } : null`;
@@ -372,92 +372,92 @@ test.skip('walk complex ast', (assert) => {
     walk(ast, {
 
         Literal() {              // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         Identifier(node) {           // 10
-            assert.ok(true);
+            t.ok(true);
             identifiers.push(node.name);
         },
 
         SpreadElement() {        // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         ThisExpression() {       // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         SequenceExpression() {   // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         NewExpression() {        // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         CallExpression() {       // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         MemberExpression() {     // 2
-            assert.ok(true);
+            t.ok(true);
         },
 
         YieldExpression() {      // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         ArrayExpression() {      // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         Property() {             // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         ObjectExpression() {     // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         UpdateExpression() {     // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         UnaryExpression() {      // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         LogicalExpression() {    // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         BinaryExpression() {        // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         ArrowExpression() {         // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         ConditionalExpression() {   // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         AssignmentExpression() {    // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         ExpressionStatement() {     // 1
-            assert.ok(true);
+            t.ok(true);
         },
 
         Program() {                 // 1
-            assert.ok(true);
+            t.ok(true);
         }
     });
 
-    assert.deepEquals(identifiers, ['name', 'name', 'user', 'id', 'users', 'index', 'User', 'isValid', 'users', 'item', 'item', 'name', 'name']);
+    t.deepEquals(identifiers, ['name', 'name', 'user', 'id', 'users', 'index', 'User', 'isValid', 'users', 'item', 'item', 'name', 'name']);
 
-    assert.end();
+    t.end();
 });

@@ -1,9 +1,8 @@
 'use strict';
 
 const test = require('tape');
-const utils = require('../utils');
 
-test('Testname', function (assert) {
-    assert.equals(actual, expected);
-    assert.end();
+test('Testname', function t {
+    t.equals(actual, expected);
+    t.end();
 });

@@ -7,12 +7,12 @@ const DistLexer = require('../../dist/bladeexp.js').Lexer;
 const DistMinLexer = require('../../dist/bladeexp.min.js').Lexer;
 
 [Lexer, DistLexer, DistMinLexer].map(Lexer => {
-    test('Lexer - reduces input when using non-sticky regex', (assert) => {
+    test('Lexer - reduces input when using non-sticky regex', t => {
         const data = `name + greeting`;
         const lexer = Lexer.create(data);
         lexer.nextToken();
-        assert.notEqual(lexer.input, data);
-        assert.end();
+        t.notEqual(lexer.input, data);
+        t.end();
     });
 
     test('Lexer - strips BOM', t => {
@@ -22,69 +22,69 @@ const DistMinLexer = require('../../dist/bladeexp.min.js').Lexer;
         t.end();
     });
 
-    test('Lexer.create - returns an object', (assert) => {
+    test('Lexer.create - returns an object', t => {
         const data = `name + greeting`;
         const lexer = Lexer.create(data);
-        assert.ok(lexer);
-        assert.equal(typeof lexer, 'object');
-        assert.throws(() => Lexer.create(), /of undefined/);
-        assert.end();
+        t.ok(lexer);
+        t.equal(typeof lexer, 'object');
+        t.throws(() => Lexer.create(), /of undefined/);
+        t.end();
     });
 
-    test('lexer.nextToken', (assert) => {
+    test('lexer.nextToken', t => {
         const data = `name + greeting`;
         const lexer = Lexer.create(data);
 
-        assert.equals(lexer.nextToken().value, 'name',     'returns first token');
-        assert.equals(lexer.nextToken().value, '+',        'returns second token');
-        assert.equals(lexer.nextToken().value, 'greeting', 'returns third token');
-        assert.equals(lexer.nextToken(),        null,      'end of tokens');
+        t.equals(lexer.nextToken().value, 'name',     'returns first token');
+        t.equals(lexer.nextToken().value, '+',        'returns second token');
+        t.equals(lexer.nextToken().value, 'greeting', 'returns third token');
+        t.equals(lexer.nextToken(),        null,      'end of tokens');
 
-        assert.end();
+        t.end();
     });
 
-    test('lexer.skipWhitespace', (assert) => {
+    test('lexer.skipWhitespace', t => {
         const data = `     name     +     greeting     `;
         const lexer = Lexer.create(data);
         lexer.skipWhitespace();
-        assert.equals(lexer.position, 5, 'skips whitespace')
-        assert.end();
+        t.equals(lexer.position, 5, 'skips whitespace')
+        t.end();
     });
 
-    test('lexer.lookahead', (assert) => {
+    test('lexer.lookahead', t => {
         const data = `     name     +     greeting     `;
         const lexer = Lexer.create(data);
 
-        assert.equal(lexer.lookahead(3).value, 'greeting', 'lookahead token');
-        assert.equal(lexer.lookahead(4), null, 'null token');
+        t.equal(lexer.lookahead(3).value, 'greeting', 'lookahead token');
+        t.equal(lexer.lookahead(4), null, 'null token');
 
-        assert.equals(lexer.stash[0].value, 'name',     'first token');
-        assert.equals(lexer.stash[1].value, '+',        'second token');
-        assert.equals(lexer.stash[2].value, 'greeting', 'third token');
+        t.equals(lexer.stash[0].value, 'name',     'first token');
+        t.equals(lexer.stash[1].value, '+',        'second token');
+        t.equals(lexer.stash[2].value, 'greeting', 'third token');
 
-        assert.end();
+        t.end();
     });
 
-    test('lexer.peek', (assert) => {
+    test('lexer.peek', t => {
         const data = `     name     +     greeting     `;
         const lexer = Lexer.create(data);
 
-        assert.equal(lexer.peek().value, 'name', 'peek token');
+        t.equal(lexer.peek().value, 'name', 'peek token');
         lexer.nextToken();
-        assert.equal(lexer.peek().value, '+', 'peek token');
+        t.equal(lexer.peek().value, '+', 'peek token');
         lexer.nextToken();
-        assert.equal(lexer.peek().value, 'greeting', 'peek token');
+        t.equal(lexer.peek().value, 'greeting', 'peek token');
         lexer.nextToken();
-        assert.equal(lexer.peek(), null, 'null token');
+        t.equal(lexer.peek(), null, 'null token');
 
-        assert.end();
+        t.end();
     });
 
-    test('lexer.peek', (assert) => {
+    test('lexer.peek', t => {
         const data = `     name     +     greeting     `;
         const lexer = Lexer.create(data);
 
-        assert.throws(() => lexer.error('Ya dun'), /Ya dun/, 'lexer throws');
-        assert.end();
+        t.throws(() => lexer.error('Ya dun'), /Ya dun/, 'lexer throws');
+        t.end();
     });
 });
