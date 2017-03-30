@@ -87,4 +87,12 @@ const DistMinLexer = require('../../dist/bladeexp.min.js').Lexer;
         t.throws(() => lexer.error('Ya dun'), /Ya dun/, 'lexer throws');
         t.end();
     });
+
+    test('Lexer - StringLiteral - line endings in string literals error', t => {
+        // This can't be done with error cases because text editors transform line endings
+        t.throws(() => Lexer.all(String.raw`\n`), /LexerError: \[Source]: Unexpected token "\\" \(1:0\)/);
+        t.throws(() => Lexer.all(String.raw`\r`), /LexerError: \[Source]: Unexpected token "\\" \(1:0\)/);
+        t.throws(() => Lexer.all(String.raw`\r\n`), /LexerError: \[Source]: Unexpected token "\\" \(1:0\)/);
+        t.end();
+    });
 });
