@@ -40,8 +40,8 @@ const lexopts = [
 lexopts.map(({ options: opts }) => {
     const lexerTransforms = [
         createLexerTransform('Lexer - ', Lexer, opts),
-        createLexerTransform('DistLexer - ', DistLexer, opts),
-        createLexerTransform('DistMinLexer - ', DistMinLexer, opts),
+        // createLexerTransform('DistLexer - ', DistLexer, opts),
+        // createLexerTransform('DistMinLexer - ', DistMinLexer, opts),
     ];
 
     lexerTransforms.map(transform => {
@@ -77,8 +77,8 @@ const parseropts = [
 parseropts.map(({ options: opts }) => {
     const parserTransforms = [
         createParserTransform('Parser - ', Parser, opts),
-        createParserTransform('DistParser - ', DistParser, opts),
-        createParserTransform('DistMinParser - ', DistMinParser, opts),
+        // createParserTransform('DistParser - ', DistParser, opts),
+        // createParserTransform('DistMinParser - ', DistMinParser, opts),
     ];
 
     parserTransforms.map(transform => {
