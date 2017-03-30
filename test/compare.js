@@ -7,6 +7,7 @@ const util = require('util');
 const glob = require('glob');
 const fm = require('front-matter');
 const test = require('tape');
+const dedent = require('dedent-js');
 
 // Splits a string, normalizing line endings and filtering empty lines
 const split = str => str.replace(/\r\n|\r/g, '\n')
@@ -125,8 +126,11 @@ function compare(pattern, options) {
                         });
                     } catch (err) {
                         throw new Error(
-                                `compare: deepEqual check threw, use "error" modifier to compare errors ${dataFile}`
-                            );
+                            dedent`
+                            compare: deepEqual check threw, use "error" modifier to compare errors:
+                              from: ${dataFile}
+                              ${err}`
+                        );
                     }
 
                     t.end();
@@ -148,7 +152,8 @@ function compare(pattern, options) {
                         } catch (err) {
                             const actual = pluck(errorProps, err);
                             const expected = transform.comparator(transformArgs);
-                            t.deepEquals(actual, expected, (hasMultiple ? `#${index} ` : '') + header.description)
+                            t.deepEquals(actual,
+                                expected, (hasMultiple ? `#${index} ` : '') + header.description);
                         }
                     });
 

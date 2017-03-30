@@ -25,7 +25,7 @@ const config = module.exports = {
 	output:
 	{
 		path: './build',
-		filename: 'blade-expression.js',
+		filename: 'bladeexp.js',
 		libraryTarget: 'umd',
 	},
 	module:
@@ -35,7 +35,7 @@ const config = module.exports = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loader: "babel-loader"
+				loader: 'babel-loader'
 			}
 		],
 	},

@@ -6,68 +6,87 @@ const path = require('path');
 const acorn = require('acorn');
 
 const compare = require('./compare');
-const Parser = require('../lib/parser');
-const Lexer = require('../lib/lexer');
 
-[
-    {
-        options: {
-            throwSourceError: false
+const Parser = require('../lib/parser');
+const DistParser = require('../dist/bladeexp.js');
+const DistMinParser = require('../dist/bladeexp.min.js');
+
+const Lexer = require('../lib/lexer');
+const DistLexer = require('../dist/bladeexp.js').Lexer;
+const DistMinLexer = require('../dist/bladeexp.min.js').Lexer;
+
+// Lexer transforms
+
+function createLexerTransform(title, _Lexer, opts) {
+    return {
+        title,
+        data({ data, header }) {
+            const options = Object.assign({}, opts, header.options);
+            return _Lexer.all(data, options)
+        },
+        comparator({ comparator, header }) {
+            const options = Object.assign({}, opts, header.options);
+            return JSON.parse(comparator, options);
         }
     }
-].map(({ options: opts }) => {
-    compare(path.join(__dirname, './cases/lexer/**/*'), {
-        prefix: 'Lexer - ',
-        transform: {
-            data: ({ data, header }) => {
-                const options = Object.assign({}, opts, header.options);
-                return Lexer.all(data, options)
-            },
-            comparator: ({ comparator, header }) => {
-                const options = Object.assign({}, opts, header.options);
-                return JSON.parse(comparator, options);
-            }
-        }
+}
+
+const lexopts = [
+    {
+        options: { throwSourceError: false }
+    }
+];
+
+lexopts.map(({ options: opts }) => {
+    const lexerTransforms = [
+        createLexerTransform('Lexer - ', Lexer, opts),
+        createLexerTransform('DistLexer - ', DistLexer, opts),
+        createLexerTransform('DistMinLexer - ', DistMinLexer, opts),
+    ];
+
+    lexerTransforms.map(transform => {
+        compare(path.join(__dirname, './cases/lexer/**/*'), {
+            prefix: transform.title,
+            transform
+        });
     });
 });
 
-[
+function createParserTransform(title, _Parser, opts, header) {
+    return {
+        title,
+        data: ({ data, header }) => {
+            const options = Object.assign({}, opts, header.options);
+            return _Parser.parse(data, options).body
+        },
+        comparator({ comparator, header }) {
+            const options = Object.assign({}, opts, header.options);
+            return JSON.parse(comparator);
+        }
+    }
+}
+
+const parseropts = [
     {
         options: {
             throwSourceError: false
         }
     }
-].map(({ options: opts }) => {
-    compare(path.join(__dirname, './cases/parser/**/*'), {
-        prefix: 'Parser - ',
-        transform: {
-            data: ({ data, header }) => {
-                const options = Object.assign({}, opts, header.options);
-                return Parser.parse(data, options).body
-            },
-            comparator({ comparator, header }) {
-                const options = Object.assign({}, opts, header.options);
-                return JSON.parse(comparator);
-            }
-        }
+];
+
+parseropts.map(({ options: opts }) => {
+    const parserTransforms = [
+        createParserTransform('Parser - ', Parser, opts),
+        createParserTransform('DistParser - ', DistParser, opts),
+        createParserTransform('DistMinParser - ', DistMinParser, opts),
+    ];
+
+    parserTransforms.map(transform => {
+        compare(path.join(__dirname, './cases/parser/**/*'), {
+            prefix: transform.title,
+            transform
+        });
     });
 });
 
 // TODO: acorn compare
-
-// [{}].map(({ options: opts }) => {
-//     compare(path.join(__dirname, './cases/parser/nodes/ArrayExpression/**/*'), {
-//         prefix: 'Acorn - ',
-//         exclude: ['./cases/parser/features/**/*'],
-//         error: ['message', 'line', 'column'],
-//         transform: {
-//             data: ({ data, header }) => {
-//                 const options = Object.assign({}, opts, header.options);
-//                 return Parser.parse(data, options).body
-//             },
-//             comparator({ comparator }) {
-//                 return acorn.parse(comparator).body;
-//             }
-//         }
-//     });
-// });
