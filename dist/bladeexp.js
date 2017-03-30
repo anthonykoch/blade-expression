@@ -2051,12 +2051,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	    var column = _column + 1;
-	    var isLineDefined = typeof _line === 'number' && isFinite(_line);
+	    var isLineNumber = typeof _line === 'number' && isFinite(_line);
 	    var isColumnNumber = typeof column === 'number' && column === column;
 	    var tolerance = 3;
 	    var errorMessage = void 0;
 
-	    if (isLineDefined) {
+	    if (isLineNumber) {
 	        (function () {
 	            // TODO: Might want to optimize this in case the string is large
 	            var lines = source.split('\n');
@@ -2072,8 +2072,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // Pointer line can not be more or less than the start
 	            var pointerLine = Math.max(start, Math.min(line, end));
 
-	            var linecol = isLineDefined ? ' (' + pointerLine + ':' + _column + ')' : '';
-	            var header = filename + ': ' + message + linecol + '\n';
+	            var linecol = isLineNumber && isColumnNumber ? ' (' + pointerLine + ':' + _column + ')' : '';
+
+	            var header = filename + ':' + (message ? ' ' + message : '') + linecol + '\n';
 	            var padding = lines.length.toString().length + POINTER.length;
 
 	            errorMessage = header + lines.slice(start, end).map(function (text, index) {
