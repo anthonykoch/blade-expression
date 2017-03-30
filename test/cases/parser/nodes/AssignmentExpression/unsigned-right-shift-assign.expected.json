@@ -1,0 +1,30 @@
+---
+name: AssignmentExpression - unsigned right shift
+description: parses simple unsigned right shift assignment
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 18,
+    "expression": {
+      "type": "AssignmentExpression",
+      "operator": ">>>=",
+      "start": 0,
+      "end": 18,
+      "left": {
+        "type": "Identifier",
+        "name": "userIndex",
+        "start": 0,
+        "end": 9
+      },
+      "right": {
+        "type": "Literal",
+        "value": "123",
+        "start": 15,
+        "end": 18
+      }
+    }
+  }
+]

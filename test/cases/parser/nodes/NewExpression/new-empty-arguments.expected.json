@@ -1,0 +1,24 @@
+---
+name: NewExpression - no args
+description: parses new expression no parens
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 9,
+    "expression": {
+      "type": "NewExpression",
+      "start": 0,
+      "end": 9,
+      "arguments": [],
+      "callee": {
+        "type": "Identifier",
+        "name": "Hello",
+        "start": 4,
+        "end": 9
+      }
+    }
+  }
+]

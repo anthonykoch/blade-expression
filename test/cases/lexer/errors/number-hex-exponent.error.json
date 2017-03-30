@@ -1,0 +1,9 @@
+---
+name: Number hex exponent
+description: numeric hex literal with exponent throws lexer error
+skip: true
+---
+
+{
+
+}

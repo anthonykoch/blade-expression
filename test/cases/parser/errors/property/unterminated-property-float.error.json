@@ -1,0 +1,8 @@
+---
+name: Unterminated property - float
+description: Unterminated property after float throws
+---
+
+{
+  "message": "Unexpected end of input"
+}

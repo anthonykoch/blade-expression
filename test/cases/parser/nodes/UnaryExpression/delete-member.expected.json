@@ -1,0 +1,38 @@
+---
+name: UnaryExpression - delete member expression
+description: delete member expression
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 16,
+    "expression": {
+      "type": "UnaryExpression",
+      "operator": "delete",
+      "prefix": true,
+      "start": 0,
+      "end": 16,
+      "argument": {
+        "type": "MemberExpression",
+        "computed": false,
+        "start": 7,
+        "end": 16,
+        "object": {
+          "end": 11,
+          "name": "user",
+          "start": 7,
+          "type": "Identifier"
+        },
+        "property": {
+          "type": "Identifier",
+          "name": "name",
+          "start": 12,
+          "end": 16
+        }
+      }
+    }
+  }
+]
+

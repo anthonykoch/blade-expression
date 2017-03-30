@@ -1,0 +1,9 @@
+---
+name: semantic - yield in assigmenment
+description:
+options:
+  context:
+    strict: true
+---
+
+{ "message": "Unexpected strict mode reserved word" }

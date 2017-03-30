@@ -1,0 +1,30 @@
+---
+name: BinaryExpression - instanceof
+description: parses simple instanceof binary
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 16,
+    "expression": {
+      "type": "BinaryExpression",
+      "operator": "instanceof",
+      "start": 0,
+      "end": 16,
+      "left": {
+        "type": "Literal",
+        "value": "10",
+        "start": 0,
+        "end": 2
+      },
+      "right": {
+        "type": "Literal",
+        "value": "42",
+        "start": 14,
+        "end": 16
+      }
+    }
+  }
+]

@@ -1,0 +1,10 @@
+---
+name: complex throw
+description: complex throw
+---
+
+{
+  "line": 1,
+  "column": 11,
+  "message": "Invalid left-hand side expression in prefix operation (1:11)"
+}

@@ -1,0 +1,24 @@
+---
+name: CallExpression - on array
+description: parses call on array
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 4,
+    "expression": {
+      "type": "CallExpression",
+      "start": 0,
+      "end": 4,
+      "arguments": [],
+      "callee": {
+        "type": "ArrayExpression",
+        "start": 0,
+        "end": 2,
+        "elements": []
+      }
+    }
+  }
+]

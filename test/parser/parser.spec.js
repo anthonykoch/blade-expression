@@ -2,7 +2,7 @@
 
 const test = require('tape');
 
-const { Parser } = require('../utils');
+const Parser = require('../../lib/parser');
 const { TokenIdentifier } = require('../../lib/constants/tokens');
 
 test('Parser.parse', (assert) => {
@@ -27,6 +27,8 @@ test('parser.parse', (assert) => {
         body: [
             {
                 type: 'ExpressionStatement',
+                start: 0,
+                end: 7,
                 expression: {
                     type: 'Literal',
                     value: `'Hello'`,
@@ -50,7 +52,7 @@ test('parser.nextToken', (assert) => {
         type: TokenIdentifier,
         value: data,
         line: 1,
-        column: 4,
+        column: 0,
         start: 0,
         end: 4,
     };
@@ -67,7 +69,7 @@ test('parser.peek', (assert) => {
         type: TokenIdentifier,
         value: data,
         line: 1,
-        column: 4,
+        column: 0,
         start: 0,
         end: 4,
     };
@@ -84,7 +86,7 @@ test('parser.ensure', (assert) => {
         type: TokenIdentifier,
         value: 'user',
         line: 1,
-        column: 15,
+        column: 11,
         start: 11,
         end: 15
     });
@@ -106,12 +108,12 @@ test('parser.expect', (assert) => {
         type: TokenIdentifier,
         value: 'user',
         line: 1,
-        column: 15,
+        column: 11,
         start: 11,
         end: 15
     }, 'expect identifier');
 
-    assert.throws(() => parser.expect('user'), /Unexpected token \./, 'expect throws if token does not have the value');
+    assert.throws(() => parser.expect('user'), /Unexpected token "\."/, 'expect throws if token does not have the value');
 
     assert.end();
 });

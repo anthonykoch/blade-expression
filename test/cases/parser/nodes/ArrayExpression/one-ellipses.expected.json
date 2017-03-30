@@ -1,0 +1,18 @@
+---
+name: ArrayExpression - one empty slot
+description: parses array with one empty slot
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 3,
+    "expression": {
+      "type": "ArrayExpression",
+      "start": 0,
+      "end": 3,
+      "elements": [null]
+    }
+  }
+]

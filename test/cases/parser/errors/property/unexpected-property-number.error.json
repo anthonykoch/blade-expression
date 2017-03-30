@@ -1,0 +1,10 @@
+---
+name: property - numeric on identifier
+description: number value for for non-computed on identifier
+---
+
+{
+  "line": 1,
+  "column": 4,
+  "message": "Unexpected number (1:4)"
+}

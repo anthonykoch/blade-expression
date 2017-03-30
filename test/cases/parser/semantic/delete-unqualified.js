@@ -1,0 +1,2 @@
+delete (a)
+delete a

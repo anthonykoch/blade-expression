@@ -1,0 +1,30 @@
+---
+name: BinaryExpression - strict not equals
+description: parses simple strict not equals binary
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 9,
+    "expression": {
+      "type": "BinaryExpression",
+      "operator": "!==",
+      "start": 0,
+      "end": 9,
+      "left": {
+        "type": "Literal",
+        "value": "10",
+        "start": 0,
+        "end": 2
+      },
+      "right": {
+        "type": "Literal",
+        "value": "42",
+        "start": 7,
+        "end": 9
+      }
+    }
+  }
+]

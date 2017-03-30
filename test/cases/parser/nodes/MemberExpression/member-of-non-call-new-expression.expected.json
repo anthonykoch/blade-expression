@@ -1,0 +1,36 @@
+---
+name: MemberExpression - new call no parens
+description: parses member of new without arguments
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 15,
+    "expression": {
+      "type": "NewExpression",
+      "start": 0,
+      "end": 15,
+      "arguments": [],
+      "callee": {
+        "type": "MemberExpression",
+        "start": 4,
+        "end": 15,
+        "computed": false,
+        "object": {
+          "type": "Identifier",
+          "name": "Person",
+          "start": 4,
+          "end": 10
+        },
+        "property": {
+          "type": "Identifier",
+          "name": "name",
+          "start": 11,
+          "end": 15
+        }
+      }
+    }
+  }
+]

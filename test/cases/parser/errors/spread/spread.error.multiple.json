@@ -1,0 +1,7 @@
+---
+name: spread - spread in assignment
+description: spread in assigment
+---
+
+{ "message": "Unexpected token \"...\"" }
+{ "message": "Unexpected token \"...\" (1:1)", "line": 1, "column": 1 }

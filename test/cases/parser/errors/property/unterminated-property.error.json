@@ -1,0 +1,8 @@
+---
+name: Unterminated property - indentifier
+description: Unterminated property after identifier throws
+---
+
+{
+  "message": "Unexpected end of input"
+}

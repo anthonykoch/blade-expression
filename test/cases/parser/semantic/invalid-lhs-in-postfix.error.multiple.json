@@ -1,0 +1,21 @@
+---
+name: semantic - invalid lhs in update postfix
+description: invalid lhs update postfix
+---
+
+{ "message": "Invalid left-hand side expression in postfix operation (1:7)", "line": 1, "column": 7 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:7)", "line": 1, "column": 7 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:7)", "line": 1, "column": 7 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:5)", "line": 1, "column": 5 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:5)", "line": 1, "column": 5 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:5)", "line": 1, "column": 5 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:5)", "line": 1, "column": 5 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:3)", "line": 1, "column": 3 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:3)", "line": 1, "column": 3 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:3)", "line": 1, "column": 3 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:11)", "line": 1, "column": 11 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:11)", "line": 1, "column": 11 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:11)", "line": 1, "column": 11 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:2)", "line": 1, "column": 2 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:2)", "line": 1, "column": 2 }
+{ "message": "Invalid left-hand side expression in postfix operation (1:2)", "line": 1, "column": 2 }

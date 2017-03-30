@@ -1,0 +1,18 @@
+---
+name: Literal - string single
+description: parses single quote
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 7,
+    "expression": {
+      "type": "Literal",
+      "value": "'Hello'",
+      "start": 0,
+      "end": 7
+    }
+  }
+]

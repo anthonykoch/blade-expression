@@ -1,0 +1,30 @@
+---
+name: BinaryExpression - greater equal
+description: parses simple great than or equal to binary
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 8,
+    "expression": {
+      "type": "BinaryExpression",
+      "operator": ">=",
+      "start": 0,
+      "end": 8,
+      "left": {
+        "type": "Literal",
+        "value": "10",
+        "start": 0,
+        "end": 2
+      },
+      "right": {
+        "type": "Literal",
+        "value": "42",
+        "start": 6,
+        "end": 8
+      }
+    }
+  }
+]

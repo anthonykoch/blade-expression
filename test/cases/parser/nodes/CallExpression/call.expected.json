@@ -1,0 +1,24 @@
+---
+name: CallExpression - on identifier
+description: parses call expression with no arguments
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 7,
+    "expression": {
+      "type": "CallExpression",
+      "start": 0,
+      "end": 7,
+      "arguments": [],
+      "callee": {
+        "type": "Identifier",
+        "name": "hello",
+        "start": 0,
+        "end": 5
+      }
+    }
+  }
+]

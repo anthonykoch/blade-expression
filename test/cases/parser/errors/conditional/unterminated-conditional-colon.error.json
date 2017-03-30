@@ -1,0 +1,8 @@
+---
+name: unterminated conditional - at false consequent
+description: missing false consequent in conditional
+---
+
+{
+  "message": "Unexpected end of input"
+}

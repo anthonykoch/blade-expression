@@ -1,0 +1,10 @@
+---
+name: Yield
+description: Yield outside of generator
+---
+
+{
+  "line": 1,
+  "column": 6,
+  "message": "Unexpected number (1:6)"
+}

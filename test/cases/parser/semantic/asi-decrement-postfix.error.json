@@ -1,0 +1,6 @@
+---
+name: ASI
+description: newline before decrement postfix errors
+---
+
+{ "message": "Unexpected end of input" }

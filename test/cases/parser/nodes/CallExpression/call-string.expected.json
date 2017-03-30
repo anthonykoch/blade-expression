@@ -1,0 +1,24 @@
+---
+name: CallExpression - on string
+description: parses call on string literal
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 9,
+    "expression": {
+      "type": "CallExpression",
+      "start": 0,
+      "end": 9,
+      "arguments": [],
+      "callee": {
+        "type": "Literal",
+        "value": "'Hello'",
+        "start": 0,
+        "end": 7
+      }
+    }
+  }
+]

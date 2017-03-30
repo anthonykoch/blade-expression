@@ -1,0 +1,8 @@
+---
+name: unterminated logical OR
+description: missing right in logical OR
+---
+
+{
+  "message": "Unexpected end of input"
+}

@@ -1,0 +1,25 @@
+---
+name: UpdateExpression - increment postfix
+description: parses update plus postfix
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 6,
+    "expression": {
+      "type": "UpdateExpression",
+      "operator": "++",
+      "prefix": false,
+      "start": 0,
+      "end": 6,
+      "argument": {
+        "type": "Identifier",
+        "name": "user",
+        "start": 0,
+        "end": 4
+      }
+    }
+  }
+]

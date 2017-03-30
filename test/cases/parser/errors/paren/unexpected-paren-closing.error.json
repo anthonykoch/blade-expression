@@ -1,0 +1,10 @@
+---
+name: paren - closing after identifier
+description: closing paren after identifier
+---
+
+{
+  "line": 1,
+  "column": 1,
+  "message": "Unexpected token \")\" (1:1)"
+}

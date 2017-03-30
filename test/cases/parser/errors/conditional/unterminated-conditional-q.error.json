@@ -1,0 +1,8 @@
+---
+name: unterminated conditional - at ?
+description: missing colon and true, false consquents in condition
+---
+
+{
+  "message": "Unexpected end of input"
+}

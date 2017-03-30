@@ -1,0 +1,24 @@
+---
+name: CallExpression - on number
+description: parses call on numeric literal
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 5,
+    "expression": {
+      "type": "CallExpression",
+      "start": 0,
+      "end": 5,
+      "arguments": [],
+      "callee": {
+        "type": "Literal",
+        "value": "123",
+        "start": 0,
+        "end": 3
+      }
+    }
+  }
+]

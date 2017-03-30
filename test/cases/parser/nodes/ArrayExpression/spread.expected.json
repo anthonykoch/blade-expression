@@ -1,0 +1,42 @@
+---
+name: ArrayExpression - with spread
+description: parses array with spread and numbers
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 19,
+    "expression": {
+      "type": "ArrayExpression",
+      "start": 0,
+      "end": 19,
+      "elements": [
+        {
+          "type": "Literal",
+          "value": "1",
+          "start": 1,
+          "end": 2
+        },
+        {
+          "type": "SpreadElement",
+          "start": 4,
+          "end": 15,
+          "argument": {
+            "type": "Identifier",
+            "name": "userList",
+            "start": 7,
+            "end": 15
+          }
+        },
+        {
+          "type": "Literal",
+          "value": "2",
+          "start": 17,
+          "end": 18
+        }
+      ]
+    }
+  }
+]

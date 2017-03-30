@@ -1,0 +1,10 @@
+---
+name: semantic - delete identifier
+description: delete identifier
+options:
+  context:
+    strict: true
+---
+
+{ "message": "Delete of an unqualified identifier in strict mode." }
+{ "message": "Delete of an unqualified identifier in strict mode." }

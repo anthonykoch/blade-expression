@@ -1,0 +1,21 @@
+---
+name: semantic - invalid lhs in assign
+description: invalid lhs assign
+---
+
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }
+{ "message": "Invalid left-hand side in assignment" }

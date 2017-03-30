@@ -1,0 +1,10 @@
+---
+name: keyword - delete
+description: keyword delete
+---
+
+{
+  "line": 1,
+  "column": 7,
+  "message": "Unexpected token \"=\" (1:7)"
+}

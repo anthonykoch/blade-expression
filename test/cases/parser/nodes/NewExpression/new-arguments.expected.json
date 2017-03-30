@@ -1,0 +1,37 @@
+---
+name: NewExpression - with args
+description: parses new expression with arguments
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 23,
+    "expression": {
+      "type": "NewExpression",
+      "start": 0,
+      "end": 23,
+      "arguments": [
+        {
+          "type": "Literal",
+          "value": "123",
+          "start": 10,
+          "end": 13
+        },
+        {
+          "type": "Literal",
+          "value": "'hello'",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "callee": {
+        "type": "Identifier",
+        "name": "Hello",
+        "start": 4,
+        "end": 9
+      }
+    }
+  }
+]

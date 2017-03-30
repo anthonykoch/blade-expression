@@ -1,0 +1,8 @@
+---
+name: unterminated call expression - identifier
+description: unterminated call
+---
+
+{
+  "message": "Unexpected end of input"
+}

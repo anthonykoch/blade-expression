@@ -1,0 +1,9 @@
+---
+name: Identifier token
+description: lexes identifier tokens
+---
+
+[
+  { "type": 2, "value": "hello", "line": 1, "column": 0, "start": 0, "end": 5 },
+  { "type": 2, "value": "undefined", "line": 1, "column": 6, "start": 6, "end": 15 }
+]

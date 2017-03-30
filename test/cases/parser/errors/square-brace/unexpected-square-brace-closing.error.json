@@ -1,0 +1,10 @@
+---
+name: square brace - closing after identifier
+description: square brace after identifier throws
+---
+
+{
+  "line": 1,
+  "column": 1,
+  "message": "Unexpected token \"]\" (1:1)"
+}

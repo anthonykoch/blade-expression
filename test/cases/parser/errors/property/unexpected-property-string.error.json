@@ -1,0 +1,10 @@
+---
+name: property - string on identifier
+description: single quote string literal after non computed property
+---
+
+{
+  "line": 1,
+  "column": 5,
+  "message": "Unexpected string (1:5)"
+}

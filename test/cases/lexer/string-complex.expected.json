@@ -1,0 +1,9 @@
+---
+name: String - complex
+description: A string with all the fixins
+---
+
+[
+  {"type": 1, "value": "\"hello \\r we \\n are \\\\r \\\\n \\\\\\r \\\\\\n \\\\\\r\\\\\\n 👍 \\'\"", "line": 1, "column": 0, "start": 0, "end": 53 },
+  {"type": 1, "value": "'hello \\r we \\n are \\\\r \\\\n \\\\\\r \\\\\\n \\\\\\r\\\\\\n 👍 \\\"'", "line": 2, "column": 0, "start": 54, "end": 107 }
+]

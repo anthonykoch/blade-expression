@@ -1,0 +1,8 @@
+---
+name: paren - open after identifier
+description: open paren after identifier
+---
+
+{
+  "message": "Unexpected end of input"
+}

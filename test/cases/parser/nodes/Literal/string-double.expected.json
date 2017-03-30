@@ -1,0 +1,18 @@
+---
+name: Literal - string double
+description: parses double quote string
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 7,
+    "expression": {
+      "type": "Literal",
+      "value": "\"hello\"",
+      "start": 0,
+      "end": 7
+    }
+  }
+]

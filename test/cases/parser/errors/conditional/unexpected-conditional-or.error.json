@@ -1,0 +1,8 @@
+---
+name: unexpected OR in conditional
+description: logical OR after colon in conditional
+---
+
+{
+  "message": "Unexpected end of input"
+}

@@ -1,0 +1,10 @@
+---
+name: keyword - after identifier
+description: keyword after identifier
+---
+
+{
+  "line": 1,
+  "column": 2,
+  "message": "Unexpected token \"for\" (1:2)"
+}

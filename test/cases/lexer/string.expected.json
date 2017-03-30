@@ -1,0 +1,11 @@
+---
+name: string literal
+description: string literal parses with newlines, returns, carriage returns, unicode characters, and unicode sequences.
+---
+
+[
+  {"type": 1, "value": "\"hello\"",     "line": 1, "column": 0, "start": 0, "end": 7 },
+  {"type": 1, "value": "'hello'",       "line": 2, "column": 0, "start": 8, "end": 15 },
+  {"type": 1, "value": "\"hello\\\"\"", "line": 3, "column": 0, "start": 16, "end": 25 },
+  {"type": 1, "value": "'hello\\''",    "line": 4, "column": 0, "start": 26, "end": 35 }
+]

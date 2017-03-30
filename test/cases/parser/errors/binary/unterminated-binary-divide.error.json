@@ -1,0 +1,8 @@
+---
+name: unterminated binary divide
+description: missing right in binary divide
+---
+
+{
+  "message": "Unexpected end of input"
+}

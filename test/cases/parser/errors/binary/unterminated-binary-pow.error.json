@@ -1,0 +1,8 @@
+---
+name: unterminated binary pow
+description: missing right in binary pow
+---
+
+{
+  "message": "Unexpected end of input"
+}

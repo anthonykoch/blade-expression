@@ -1,0 +1,9 @@
+---
+name: numeric octal with exponent
+description: lexer throws when octal has exponent
+skip: true
+---
+
+{
+
+}

@@ -16,8 +16,15 @@ const er = require('escape-string-regexp');
 const { keywords,
 		punctuators } = require('./lib/constants/grammar');
 
-const KEYWORDS    = keywords.map(er).join('|');
-const PUNCTUATORS = punctuators.map(er).join('|')
+
+const regexify =
+    items => Object.keys(items)
+            .sort((a, b) => b.length - a.length)
+            .map(er)
+            .join('|');
+
+const KEYWORDS = regexify(keywords);
+const PUNCTUATORS = regexify(punctuators);
 
 const _WhiteSpace             = `\\t\\v\\f \\xA0`;
 const WhiteSpace              = `[${_WhiteSpace}]`;
@@ -117,46 +124,33 @@ const all = [
 	IdentifierName,
 ].join('|')
 
-module.exports = {
-	all,
-	Punctuator,
-	Literal,
-	StringLiteral,
-	NumericLiteral,
-	Template,
-	ReservedWord,
-	IdentifierName,
-	IdentifierPart,
-
-	allRegex:       new RegExp(all,            'u'),
-	Punctuator:     new RegExp(Punctuator,     ''),
-	Literal:        new RegExp(Literal,        'u'),
-	StringLiteral:  new RegExp(StringLiteral,  'u'),
-	NumericLiteral: new RegExp(NumericLiteral, 'u'),
-	Template:       new RegExp(Template,       'u'),
-	ReservedWord:   new RegExp(ReservedWord,   'u'),
-	IdentifierName: new RegExp(IdentifierName, 'u'),
-	IdentifierPart: new RegExp(IdentifierPart, 'u')
-};
-
+exports.all            = new RegExp(`^(?:${all})`,            'u');
+exports.Punctuator     = new RegExp(`^(?:${Punctuator})`,     '');
+exports.Literal        = new RegExp(`^(?:${Literal})`,        'u');
+exports.StringLiteral  = new RegExp(`^(?:${StringLiteral})`,  'u');
+exports.NumericLiteral = new RegExp(`^(?:${NumericLiteral})`, 'u');
+exports.Template       = new RegExp(`^(?:${Template})`,       'u');
+exports.ReservedWord   = new RegExp(`^(?:${ReservedWord})`,   'u');
+exports.IdentifierName = new RegExp(`^(?:${IdentifierName})`, 'u');
+exports.IdentifierPart = new RegExp(`^(?:${IdentifierPart})`, 'u');
 
 const template =
 `'use strict';
 
 /* Generated from ./regex.js */
 
-exports.Punctuator      = ${module.exports.Punctuator};
+exports.Punctuator      = ${exports.Punctuator};
 
-exports.NumericLiteral  = ${module.exports.NumericLiteral};
+exports.NumericLiteral  = ${exports.NumericLiteral};
 
-exports.StringLiteral   = ${module.exports.StringLiteral};
+exports.StringLiteral   = ${exports.StringLiteral};
 
-// exports.Template        = ${module.exports.Template};
+exports.ReservedWord    = ${exports.ReservedWord};
 
-exports.ReservedWord    = ${module.exports.ReservedWord};
-
-exports.IdentifierName  = ${module.exports.IdentifierName};
+exports.IdentifierName  = ${exports.IdentifierName};
 
 `;
+
+// exports.Template        = ${exports.Template};
 
 console.log(template)

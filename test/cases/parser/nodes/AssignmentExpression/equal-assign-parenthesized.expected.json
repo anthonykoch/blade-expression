@@ -1,0 +1,30 @@
+---
+name: AssignmentExpression - parenthesized identifier
+description: parses assignment with parenthesized left identifier
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 13,
+    "expression": {
+      "type": "AssignmentExpression",
+      "operator": "=",
+      "start": 1,
+      "end": 13,
+      "left": {
+        "type": "Identifier",
+        "name": "food",
+        "start": 1,
+        "end": 5
+      },
+      "right": {
+        "type": "Identifier",
+        "name": "good",
+        "start": 9,
+        "end": 13
+      }
+    }
+  }
+]

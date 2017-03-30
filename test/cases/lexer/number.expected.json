@@ -1,0 +1,19 @@
+---
+name: NumericLiteral
+description: lexes numbers
+---
+
+[
+  {"type": 0, "value": "123",         "line": 1, "column": 0, "start": 0, "end": 3 },
+  {"type": 0, "value": ".123",        "line": 3, "column": 0, "start": 5, "end": 9 },
+  {"type": 0, "value": "123.",        "line": 4, "column": 0, "start": 10, "end": 14 },
+  {"type": 0, "value": "132.123",     "line": 5, "column": 0, "start": 15, "end": 22 },
+  {"type": 0, "value": ".123e+12",    "line": 6, "column": 0, "start": 23, "end": 31 },
+  {"type": 0, "value": "101.e+12",    "line": 7, "column": 0, "start": 32, "end": 40 },
+  {"type": 0, "value": "132.123e+12", "line": 8, "column": 0, "start": 41, "end": 52 },
+  {"type": 0, "value": "1e+12",       "line": 10, "column": 0, "start": 54, "end": 59 },
+  {"type": 0, "value": "0x01",        "line": 12, "column": 0, "start": 61, "end": 65 },
+  {"type": 0, "value": "0b0101",      "line": 14, "column": 0, "start": 67, "end": 73 },
+  {"type": 0, "value": "0B0101",      "line": 15, "column": 0, "start": 74, "end": 80 },
+  {"type": 0, "value": "0o123",       "line": 17, "column": 0, "start": 82, "end": 87 }
+]

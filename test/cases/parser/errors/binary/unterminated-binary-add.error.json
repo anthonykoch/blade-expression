@@ -1,0 +1,8 @@
+---
+name: unterminated binary add
+description: missing right in binary add
+---
+
+{
+  "message": "Unexpected end of input"
+}

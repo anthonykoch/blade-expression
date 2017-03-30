@@ -1,0 +1,31 @@
+---
+name: SequenceExpression
+description: parses sequence expression
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 8,
+    "expression": {
+      "type": "SequenceExpression",
+      "start": 0,
+      "end": 8,
+      "expressions": [
+        {
+          "type": "Literal",
+          "value": "123",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "type": "Literal",
+          "value": "456",
+          "start": 5,
+          "end": 8
+        }
+      ]
+    }
+  }
+]
