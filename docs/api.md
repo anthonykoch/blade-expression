@@ -9,9 +9,9 @@ Returns an AST of the expression that was passed. This is a shortcut to having t
 const Parser = require('blade-expression');
 
 const ast = Parser.parser('delete user.name', {
-	context: {
-		strict: true
-	}
+  context: {
+    strict: true
+  }
 });
 ```
 
@@ -31,11 +31,11 @@ The options passed affect how the data is parsed and lexed.
 ```js
 // An overview of all options
 const options = {
-	useStickyRegex: false,
-	context: {
-		strict: true,
-		inGenerator: true
-	}
+  useStickyRegex: false,
+  context: {
+    strict: true,
+    inGenerator: true
+  }
 };
 
 const ast = Parser.parse(data, options);
