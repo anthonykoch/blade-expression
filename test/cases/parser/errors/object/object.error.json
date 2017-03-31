@@ -1,0 +1,6 @@
+---
+name: array - unclosed
+description: unclosed array
+---
+
+{ "line": 1, "column": 0, "message": "Unexpected end of input (1:0)" }

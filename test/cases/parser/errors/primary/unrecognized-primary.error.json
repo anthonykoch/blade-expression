@@ -1,0 +1,6 @@
+---
+name: Primary - unrecognized
+description: does not parse as primary expression
+---
+
+{ "line": 1, "column": 0, "message": "Unexpected token \"%\" (1:0)" }

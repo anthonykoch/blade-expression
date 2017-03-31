@@ -151,19 +151,6 @@ test('parser.match', t => {
     t.end();
 });
 
-test('parser.matches', t => {
-    const data = `user.name`;
-    const parser = Parser.create(data);
-
-    t.ok(parser.matches('user', '.'));
-    t.notOk(parser.matches('user.'));
-
-    parser.nextToken();
-    t.ok(parser.matches('.', 'name'));
-
-    t.end();
-});
-
 test('parser.source', t => {
     const data = `user.name`;
     const parser = Parser.create(data);

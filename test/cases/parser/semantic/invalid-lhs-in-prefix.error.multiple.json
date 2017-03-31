@@ -3,23 +3,23 @@ name: semantic - invalid lhs in update prefix
 description: invalid lhs update prefix
 ---
 
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
 { "message": "Invalid left-hand side expression in prefix operation (1:2)", "line": 1, "column": 2 }
 { "message": "Invalid left-hand side expression in prefix operation (1:2)", "line": 1, "column": 2 }
 { "message": "Invalid left-hand side expression in prefix operation (1:2)", "line": 1, "column": 2 }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
-{ "message": "Invalid left-hand side expression in prefix operation" }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }
+{ "message": "Invalid left-hand side expression in prefix operation (1:0)", "line": 1, "column": 0 }

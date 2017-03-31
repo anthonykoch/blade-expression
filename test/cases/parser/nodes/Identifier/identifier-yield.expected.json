@@ -1,6 +1,6 @@
 ---
-name: YieldExpression
-description: parses yield
+name: Identifier - yield
+description: parses yield as identifier
 ---
 
 [

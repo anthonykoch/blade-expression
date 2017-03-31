@@ -1,9 +1,9 @@
 ---
 name: semantic - yield in assigmenment
-description:
+description: yield in assignment
 options:
   context:
     strict: true
 ---
 
-{ "message": "Unexpected strict mode reserved word" }
+{ "message": "Unexpected strict mode reserved word (1:0)", "line": 1, "column": 0 }

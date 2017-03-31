@@ -1,7 +1,7 @@
 ---
-name: spread - spread in assignment
-description: spread in assigment
+name: spread - spread outside call and array
+description: spread outside call and array
 ---
 
-{ "message": "Unexpected token \"...\"" }
+{ "message": "Unexpected token \"...\" (1:0)", "line": 1, "column": 0 }
 { "message": "Unexpected token \"...\" (1:1)", "line": 1, "column": 1 }

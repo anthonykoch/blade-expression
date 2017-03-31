@@ -129,7 +129,10 @@ function compare(pattern, options) {
                             dedent`
                             compare: deepEqual check threw, use "error" modifier to compare errors:
                               from: ${dataFile}
-                              ${err}`
+
+                              ${err.stack}
+
+                              `
                         );
                     }
 
@@ -161,7 +164,7 @@ function compare(pattern, options) {
                 }
             } else {
                 const message =
-                    `Unknown modifier "${modifier}" from filename ${dataFile}`;
+                    `Unknown modifier "${modifiers}" from filename ${dataFile}`;
                 throw new Error(message);
             }
 

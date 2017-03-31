@@ -6,5 +6,5 @@ options:
     strict: true
 ---
 
-{ "message": "Delete of an unqualified identifier in strict mode." }
-{ "message": "Delete of an unqualified identifier in strict mode." }
+{ "message": "Delete of an unqualified identifier in strict mode. (1:0)", "line": 1, "column": 0 }
+{ "message": "Delete of an unqualified identifier in strict mode. (1:0)", "line": 1, "column": 0 }

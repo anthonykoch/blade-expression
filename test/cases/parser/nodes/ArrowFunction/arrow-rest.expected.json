@@ -1,0 +1,39 @@
+---
+name: arrow - rest parameter
+description: arrow only rest parameter
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 16,
+    "expression": {
+      "type": "ArrowExpression",
+      "body": {
+        "end": 16,
+        "start": 13,
+        "type": "Literal",
+        "value": "123"
+      },
+      "defaults": null,
+      "expression": true,
+      "generator": false,
+      "parameters": [{
+        "type": "Identifier",
+        "name": "args",
+        "start": 4,
+        "end": 8
+      }],
+      "rest": {
+        "type": "Identifier",
+        "name": "args",
+        "end": 8,
+        "start": 4
+      },
+      "start": 0,
+      "end": 16
+    }
+  }
+]
+

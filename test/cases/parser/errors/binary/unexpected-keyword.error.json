@@ -1,0 +1,10 @@
+---
+name: unexpected keyword in binary add
+description: add binary identifier with keyword "for"
+---
+
+{
+  "line": 1,
+  "column": 7,
+  "message": "Unexpected token \"for\" (1:7)"
+}

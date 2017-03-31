@@ -1,0 +1,40 @@
+---
+name: ObjectExpression - computed key
+description: parses object literal with binary expression inside computed property
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 19,
+    "expression": {
+      "type": "ObjectExpression",
+      "start": 0,
+      "end": 19,
+      "properties": [
+        {
+          "type": "Property",
+          "kind": "init",
+          "shorthand": false,
+          "computed": false,
+          "method": false,
+          "start": 2,
+          "end": 17,
+          "key": {
+            "type": "Literal",
+            "value": "\"person\"",
+            "start": 2,
+            "end": 10
+          },
+          "value": {
+            "type": "Identifier",
+            "name": "lives",
+            "start": 12,
+            "end": 17
+          }
+        }
+      ]
+    }
+  }
+]
