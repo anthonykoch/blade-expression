@@ -30,6 +30,7 @@ description: parses object literal
           "value": {
             "type": "Literal",
             "value": "'Hello'",
+            "raw": "Hello",
             "start": 12,
             "end": 19
           }

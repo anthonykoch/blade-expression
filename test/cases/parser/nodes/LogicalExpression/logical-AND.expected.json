@@ -16,12 +16,14 @@ description: parses logical AND binary
       "left": {
         "type": "Literal",
         "value": "10",
+        "raw": 10,
         "start": 0,
         "end": 2
       },
       "right": {
         "type": "Literal",
         "value": "42",
+        "raw": 42,
         "start": 6,
         "end": 8
       }

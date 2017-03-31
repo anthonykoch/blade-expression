@@ -19,12 +19,14 @@ description: parses array with empty slots and numbers
         {
           "type": "Literal",
           "value": "1",
+          "raw": 1,
           "start": 4,
           "end": 5
         },
         {
           "type": "Literal",
           "value": "2",
+          "raw": 2,
           "start": 6,
           "end": 7
         },
@@ -32,6 +34,7 @@ description: parses array with empty slots and numbers
         {
           "type": "Literal",
           "value": "3",
+          "raw": 3,
           "start": 9,
           "end": 10
         }

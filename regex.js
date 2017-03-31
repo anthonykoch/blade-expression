@@ -103,7 +103,7 @@ const Template                 = `(?:${NoSubstitutionTemplate}|${TemplateHead})`
 // const StringLiteral   = `(?:("|')(?:${StringCharacters})?\\1)`;
 const StringLiteral   = `(?:'(?:${SingleStringCharacters})?')|(?:"(?:${DoubleStringCharacters})?")`;
 
-const NullLiteral     = `null`;
+const NullLiteral     = `(?:null)`;
 const BooleanLiteral  = `(?:true|false)`
 const NumericLiteral  =
 	`(?:${HexIntegerLiteral}|${OctalIntegerLiteral}|${BinaryIntegerLiteral}|${DecimalLiteral})`;
@@ -129,6 +129,8 @@ exports.Punctuator     = new RegExp(`^(?:${Punctuator})`,     '');
 exports.Literal        = new RegExp(`^(?:${Literal})`,        'u');
 exports.StringLiteral  = new RegExp(`^(?:${StringLiteral})`,  'u');
 exports.NumericLiteral = new RegExp(`^(?:${NumericLiteral})`, 'u');
+exports.BooleanLiteral = new RegExp(`^(?:${BooleanLiteral})`, '');
+exports.NullLiteral    = new RegExp(`^(?:${NullLiteral})`,    '');
 exports.Template       = new RegExp(`^(?:${Template})`,       'u');
 exports.ReservedWord   = new RegExp(`^(?:${ReservedWord})`,   'u');
 exports.IdentifierName = new RegExp(`^(?:${IdentifierName})`, 'u');
@@ -144,6 +146,10 @@ exports.Punctuator      = ${exports.Punctuator};
 exports.NumericLiteral  = ${exports.NumericLiteral};
 
 exports.StringLiteral   = ${exports.StringLiteral};
+
+exports.NullLiteral     = ${exports.NullLiteral};
+
+exports.BooleanLiteral  = ${exports.BooleanLiteral};
 
 exports.ReservedWord    = ${exports.ReservedWord};
 

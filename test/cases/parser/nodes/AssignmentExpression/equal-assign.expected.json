@@ -22,6 +22,7 @@ description: parses equal assignment
       "right": {
         "type": "Literal",
         "value": "'good'",
+        "raw": "good",
         "start": 7,
         "end": 13
       }

@@ -16,12 +16,14 @@ description: parses call expression with arguments
         {
           "type": "Literal",
           "value": "123",
+          "raw": 123,
           "start": 6,
           "end": 9
         },
         {
           "type": "Literal",
           "value": "'people'",
+          "raw": "people",
           "start": 11,
           "end": 19
         }

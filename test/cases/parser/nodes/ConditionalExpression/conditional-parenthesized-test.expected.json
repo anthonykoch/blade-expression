@@ -21,12 +21,14 @@ description: parses conditial no parenthesized
       "consequent": {
         "type":  "Literal",
         "value": "123",
+        "raw": 123,
         "start": 10,
         "end": 13
       },
       "alternate": {
         "type": "Literal",
         "value": "456",
+        "raw": 456,
         "start": 16,
         "end": 19
       }

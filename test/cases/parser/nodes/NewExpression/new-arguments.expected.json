@@ -16,12 +16,14 @@ description: parses new expression with arguments
         {
           "type": "Literal",
           "value": "123",
+          "raw": 123,
           "start": 10,
           "end": 13
         },
         {
           "type": "Literal",
           "value": "'hello'",
+          "raw": "hello",
           "start": 15,
           "end": 22
         }

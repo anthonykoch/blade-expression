@@ -89,5 +89,3 @@ parseropts.map(({ options: opts }) => {
         });
     });
 });
-
-// TODO: acorn compare

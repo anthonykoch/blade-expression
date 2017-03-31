@@ -16,6 +16,7 @@ description: parses call on string literal
       "callee": {
         "type": "Literal",
         "value": "'Hello'",
+        "raw": "Hello",
         "start": 0,
         "end": 7
       }

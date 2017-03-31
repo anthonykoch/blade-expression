@@ -16,6 +16,7 @@ description: parses compless new expression
       "left": {
         "type": "Literal",
         "value": "'Hello '",
+        "raw": "Hello ",
         "start": 0,
         "end": 8
       },
@@ -50,6 +51,7 @@ description: parses compless new expression
               {
                 "type": "Literal",
                 "value": "'James'",
+                "raw": "James",
                 "start": 23,
                 "end": 30
               },
@@ -81,6 +83,7 @@ description: parses compless new expression
                         {
                           "type": "Literal",
                           "value": "'Some'",
+                          "raw": "Some",
                           "start": 46,
                           "end": 52
                         },
@@ -88,6 +91,7 @@ description: parses compless new expression
                         {
                           "type": "Literal",
                           "value": "'People'",
+                          "raw": "People",
                           "start": 55,
                           "end": 63
                         },

@@ -22,6 +22,7 @@ description: parses simple right shift assignment
       "right": {
         "type": "Literal",
         "value": "123",
+        "raw": 123,
         "start": 14,
         "end": 17
       }

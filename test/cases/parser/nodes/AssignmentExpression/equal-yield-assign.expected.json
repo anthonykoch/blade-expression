@@ -22,6 +22,7 @@ description: assignment with left yield identifier
       "right": {
         "type": "Literal",
         "value": "123",
+        "raw": 123,
         "start": 8,
         "end": 11
       }

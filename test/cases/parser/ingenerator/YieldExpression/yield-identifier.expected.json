@@ -19,6 +19,7 @@ options:
       "argument": {
         "type": "Literal",
         "value": "123",
+        "raw": 123,
         "start": 6,
         "end": 9
       }

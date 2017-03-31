@@ -29,12 +29,14 @@ description: parses object literal with binary expression inside computed proper
             "left": {
               "type": "Literal",
               "value": "'Hello'",
+              "raw": "Hello",
               "start": 3,
               "end": 10
             },
             "right": {
               "type": "Literal",
               "value": "' there'",
+              "raw": " there",
               "start": 13,
               "end": 21
             }

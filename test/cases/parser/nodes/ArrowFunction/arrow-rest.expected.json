@@ -11,10 +11,11 @@ description: arrow only rest parameter
     "expression": {
       "type": "ArrowExpression",
       "body": {
-        "end": 16,
-        "start": 13,
         "type": "Literal",
-        "value": "123"
+        "value": "123",
+        "raw": 123,
+        "start": 13,
+        "end": 16
       },
       "defaults": null,
       "expression": true,
