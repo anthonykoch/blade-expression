@@ -6,7 +6,6 @@ const path = require('path');
 const acorn = require('acorn');
 
 const compare = require('./compare');
-only: true
 
 const Parser = require('../lib/parser');
 const DistParser = require('../dist/bladeexp.js');
