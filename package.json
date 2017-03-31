@@ -16,7 +16,7 @@
     "build": "npm run build:regex && npm run build:package && npm run build:js && npm run build:split",
     "watch:js": "npm run build:js -- --watch",
     "minify": "bash bin/minify.sh",
-    "cov": "npm run minify && istanbul cover ./test/index.js -i lib/**/*.js"
+    "cov": "npm run test && npm run minify && istanbul cover ./test/index.js -i lib/**/*.js"
   },
   "repository": {
     "type": "git"
