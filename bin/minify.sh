@@ -1,7 +1,7 @@
 #!/bin/bash
 
 npm run clean
-npm run build
+npm run build:js
 
 BABEL_OPTS='--presets=babili --no-comments'
 BABEL_COMMAND="./node_modules/babel-cli/bin/babel.js"
