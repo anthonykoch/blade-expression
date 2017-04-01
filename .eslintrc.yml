@@ -1,0 +1,272 @@
+env:
+  browser: true
+  commonjs: true
+  es6: true
+  node: true
+extends: 'eslint:recommended'
+rules:
+  yield-star-spacing:
+    - 2
+    - before: false
+      after: true
+  template-curly-spacing: [2, 'never']
+  rest-spread-spacing: [2, 'never']
+  require-yield: 2
+  prefer-template: 2
+  prefer-spread: 2
+  prefer-rest-params: 2
+  prefer-numeric-literals: 2
+  prefer-arrow-callback:
+    - 2
+    - allowNamedFunctions: true
+  # object-shorthand:
+  #   - 2
+  #   - consistent-as-needed
+  no-var: 2
+  no-useless-rename: 2
+  no-useless-constructor: 2
+  no-useless-computed-key: 2
+  no-this-before-super: 2
+  no-duplicate-imports: 2
+  no-dupe-class-members: 2
+  no-const-assign: 2
+  no-class-assign: 2
+  constructor-super: 2
+  generator-star-spacing:
+    - 2
+    - before: false
+      after: true
+  arrow-spacing:
+    - 2
+    - before: true
+      after: true
+  # arrow-body-style:
+  #   - 2
+  #   - as-needed
+  #   - requireReturnForObjectLiteral: false
+  template-tag-spacing: [2, 'never']
+  spaced-comment: [2, 'always']
+  space-unary-ops:
+    - 2
+    - words: true
+      nonwords: false
+      overrides:
+        '!': true
+  # Don't do for destructoring defaults
+  # space-infix-ops:
+  #   - 2
+  #   - int32Hint: true
+  # space-in-parens: [2, 'never']
+  space-before-function-paren:
+    - 2
+    - anonymous: 'always'
+      named: 'never'
+      asyncArrow: 'always'
+  space-before-blocks: [2, 'always']
+  semi-spacing: 2
+  semi: [2, 'always']
+  quotes:
+    - 2
+    - single
+    - avoidEscape: true
+      allowTemplateLiterals: true
+  operator-linebreak:
+    - 2
+    - after
+    - overrides:
+        '?': true
+        ':': true
+  one-var-declaration-per-line: [2, 'always']
+  one-var: [2, 'never']
+  object-property-newline: 2
+  object-curly-spacing: [2, 'always']
+  object-curly-newline:
+    - 2
+    - minProperties: 3
+      multiline: true
+  no-whitespace-before-property: 2
+  no-unneeded-ternary: 2
+  no-trailing-spaces: 2
+  no-tabs: 2
+  # no-plusplus: 2
+  no-new-object: 2
+  no-nested-ternary: 2
+  no-negated-condition: 2
+  no-multiple-empty-lines:
+    - 2
+    - max: 2
+  no-mixed-spaces-and-tabs: 2
+  no-mixed-operators: 2
+  no-lonely-if: 2
+  no-inline-comments: 2
+  # no-continue: 2
+  no-array-constructor: 2
+  newline-per-chained-call:
+    - 2
+    - ignoreChainWithDepth: 2
+  newline-before-return: 2
+  newline-after-var: 2
+  new-cap:
+    - 2
+    - capIsNew: false
+  max-statements-per-line:
+    - 2
+    - max: 2
+  max-params: [2, 10]
+  max-nested-callbacks:
+    - 2
+    - max: 10
+  max-len:
+    - 2
+    - code: 100
+      comments: 100
+      tabWidth: 2
+      ignoreUrls: true
+      ignoreRegExpLiterals: true
+      ignoreTemplateLiterals: true
+  max-depth: [2, 10]
+  lines-around-directive: 2
+  line-comment-position:
+    - 2
+    - position: 'above'
+  keyword-spacing: 2
+  key-spacing:
+    - 2
+    - mode: 'minimum'
+  indent:
+    - 2
+    - 2
+    - SwitchCase: 1
+      ArrayExpression: 'first'
+      CallExpression:
+          arguments: 'first'
+  func-style:
+    - 2
+    - declaration
+    - allowArrowFunctions: true
+  func-call-spacing: [2, 'never']
+  eol-last: 2
+  consistent-this: [2, '_this']
+  computed-property-spacing: 2
+  comma-style: [2, 'last']
+  comma-spacing: 2
+  comma-dangle: [2, 'always-multiline']
+  camelcase: 2
+  brace-style:
+    - 2
+    - 1tbs
+    - allowSingleLine: true
+  array-bracket-spacing: 2
+  # no-sync: 2
+  no-path-concat: 2
+  handle-callback-err: 2
+  # global-require: 2
+  callback-return: 2
+  no-use-before-define:
+    - 2
+    - functions: false
+      classes: false
+      variables: true
+  no-unused-vars: 2
+  no-undef-init: 2
+  no-undef: 2
+  no-shadow-restricted-names: 2
+  no-restricted-globals: 2
+  no-delete-var: 2
+  init-declarations: [2, 'always']
+  strict: 2
+  yoda: [2, 'never']
+  wrap-iife: [2, 'inside']
+  require-await: 2
+  radix: [2, as-needed]
+  prefer-promise-reject-errors: 2
+  no-with: 2
+  # no-warning-comments: 1
+  no-void: 2
+  no-useless-return: 2
+  no-useless-escape: 2
+  no-useless-concat: 2
+  no-useless-call: 2
+  no-unused-labels: 2
+  no-unused-expressions: 2
+  no-unmodified-loop-condition: 2
+  no-throw-literal: 2
+  no-sequences: 2
+  no-self-compare: 2
+  no-self-assign: 2
+  no-script-url: 2
+  no-return-assign: 2
+  no-redeclare: 2
+  no-param-reassign: 2
+  no-octal-escape: 2
+  no-octal: 2
+  no-new-wrappers: 2
+  no-new-func: 2
+  no-new: 2
+  no-multi-str: 2
+  no-multi-spaces:
+    - 2
+    - exceptions:
+        Property: true
+        MemberExpressin: true
+        AssignmentExpression: true
+        CallExpression: true
+        LogicalExpression: true
+        VariableDeclarator: true
+  # no-magic-numbers: 2
+  no-labels: 2
+  no-implied-eval: 2
+  no-implicit-globals: 2
+  no-global-assign: 2
+  no-floating-decimal: 2
+  no-extra-label: 2
+  no-extra-bind: 2
+  no-extend-native: 2
+  no-eval: 2
+  no-empty-pattern: 2
+  no-empty-function:
+    - 2
+    - allow:
+      - arrowFunctions
+      - getters
+      - setters
+  no-else-return: 2
+  no-caller: 2
+  no-alert: 2
+  guard-for-in: 2
+  eqeqeq: [2, 'smart']
+  dot-notation: 2
+  dot-location: [2, 'property']
+  default-case: 2
+  curly: 2
+  consistent-return: 2
+  complexity: [2, 25]
+  class-methods-use-this: 2
+  block-scoped-var: 2
+  array-callback-return: 2
+  accessor-pairs: 2
+  valid-typeof: 2
+  valid-jsdoc: 2
+  use-isnan: 2
+  no-unsafe-negation: 2
+  no-unsafe-finally: 2
+  no-unreachable: 2
+  no-unexpected-multiline: 2
+  no-sparse-arrays: 2
+  no-obj-calls: 2
+  no-irregular-whitespace: 2
+  no-invalid-regexp: 2
+  no-extra-semi: 2
+  no-extra-boolean-cast: 2
+  no-ex-assign: 2
+  no-empty-character-class: 2
+  no-empty:
+    - 2
+    - allowEmptyCatch: true
+  no-duplicate-case: 2
+  no-dupe-keys: 2
+  no-dupe-args: 2
+  no-control-regex: 2
+  no-console: 2
+  no-compare-neg-zero: 2
+  no-await-in-loop: 2

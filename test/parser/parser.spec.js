@@ -8,6 +8,7 @@ const Parser = require('../../lib/parser');
 
 test('Parser.parse', t => {
   const actual = Parser.parse('id');
+
   t.equals(actual.type, 'Program');
   t.throws(() => Parser.parse(), /./, 'parse throws without passing a string');
   t.end();
@@ -15,23 +16,24 @@ test('Parser.parse', t => {
 
 test('Parser.create', t => {
   const parser = Parser.create(`'Hello'`);
+
   t.equals(typeof parser, 'object');
   t.throws(() => Parser.create(), /of undefined/, 'create throws without passing a string');
   t.end();
 });
 
 test('parser.parse', t => {
-  const data = `Hello`;
+  const data = 'Hello';
   const parser = Parser.create(data);
   const ast = parser.parse();
+
   t.equals(ast.type, 'Program', 'returns an ast');
   t.end();
 });
 
 test('parser.nextToken', t => {
-  const data = `user`;
+  const data = 'user';
   const parser = Parser.create(data);
-
   const token = {
     type: TokenIdentifier,
     value: data,
@@ -46,7 +48,7 @@ test('parser.nextToken', t => {
 });
 
 test('parser.peek', t => {
-  const data = `user`;
+  const data = 'user';
   const parser = Parser.create(data);
 
   const token = {
@@ -72,7 +74,7 @@ test('parser.ensure', t => {
     line: 1,
     column: 11,
     start: 11,
-    end: 15
+    end: 15,
   });
 
   t.doesNotThrow(() => parser.ensure(9));
@@ -94,7 +96,7 @@ test('parser.expect', t => {
     line: 1,
     column: 11,
     start: 11,
-    end: 15
+    end: 15,
   }, 'expect identifier');
 
   t.throws(() => parser.expect('user'), /Unexpected token "\."/, 'expect throws if token does not have the value');
@@ -103,7 +105,7 @@ test('parser.expect', t => {
 });
 
 test('parser.peek', t => {
-  const data = `user.name`;
+  const data = 'user.name';
   const parser = Parser.create(data);
 
   t.deepEquals(parser.peek().value, 'user', 'peek returns next token');
@@ -121,7 +123,7 @@ test('parser.peek', t => {
 });
 
 test('parser.match', t => {
-  const data = `user.name`;
+  const data = 'user.name';
   const parser = Parser.create(data);
 
   t.ok(parser.match('user'), 'matches identifier');
@@ -135,7 +137,7 @@ test('parser.match', t => {
 });
 
 test('parser.source', t => {
-  const data = `user.name`;
+  const data = 'user.name';
   const parser = Parser.create(data);
 
   t.ok(parser.source === parser.lexer.source);

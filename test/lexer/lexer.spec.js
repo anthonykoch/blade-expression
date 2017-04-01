@@ -5,8 +5,9 @@ const test = require('tape');
 const Lexer = require('../../lib/lexer');
 
 test('Lexer - reduces input when using non-sticky regex', t => {
-  const data = `name + greeting`;
+  const data = 'name + greeting';
   const lexer = Lexer.create(data);
+
   lexer.nextToken();
   t.notEqual(lexer.input, data);
   t.end();
@@ -14,14 +15,18 @@ test('Lexer - reduces input when using non-sticky regex', t => {
 
 test('Lexer - strips BOM', t => {
   t.equals(Lexer.create('\uFEFFhello').input, 'hello');
-  t.notEquals(Lexer.create('hello\uFEFF'), 'hello\uFEFF',
-    'does not remove BOM ');
+  t.notEquals(
+      Lexer.create('hello\uFEFF'),
+      'hello\uFEFF',
+      'does not remove BOM '
+    );
   t.end();
 });
 
 test('Lexer.create - returns an object', t => {
-  const data = `name + greeting`;
+  const data = 'name + greeting';
   const lexer = Lexer.create(data);
+
   t.ok(lexer);
   t.equal(typeof lexer, 'object');
   t.throws(() => Lexer.create(), /of undefined/);
@@ -29,7 +34,7 @@ test('Lexer.create - returns an object', t => {
 });
 
 test('lexer.nextToken', t => {
-  const data = `name + greeting`;
+  const data = 'name + greeting';
   const lexer = Lexer.create(data);
 
   t.equals(lexer.nextToken().value, 'name',     'returns first token');
@@ -41,15 +46,16 @@ test('lexer.nextToken', t => {
 });
 
 test('lexer.skipWhitespace', t => {
-  const data = `     name     +     greeting     `;
+  const data = '     name     +     greeting     ';
   const lexer = Lexer.create(data);
+
   lexer.skipWhitespace();
-  t.equals(lexer.position, 5, 'skips whitespace')
+  t.equals(lexer.position, 5, 'skips whitespace');
   t.end();
 });
 
 test('lexer.lookahead', t => {
-  const data = `     name     +     greeting     `;
+  const data = '     name     +     greeting     ';
   const lexer = Lexer.create(data);
 
   t.equal(lexer.lookahead(3).value, 'greeting', 'lookahead token');
@@ -71,7 +77,7 @@ test('lexer.lookahead', t => {
 });
 
 test('lexer.peek', t => {
-  const data = `     name     +     greeting     `;
+  const data = '     name     +     greeting     ';
   const lexer = Lexer.create(data);
 
   t.equal(lexer.peek().value, 'name', 'peek token');
@@ -89,7 +95,7 @@ test('lexer.peek', t => {
 });
 
 test('lexer.peek', t => {
-  const data = `     name     +     greeting     `;
+  const data = '     name     +     greeting     ';
   const lexer = Lexer.create(data);
 
   t.throws(() => lexer.error('Ya dun'), /Ya dun/, 'lexer throws');
@@ -98,8 +104,11 @@ test('lexer.peek', t => {
 
 test('Lexer - StringLiteral - line endings in string literals error', t => {
   // This can't be done with error cases because text editors transform line endings
-  t.throws(() => Lexer.all(String.raw`\n`), /LexerError: \[Source]: Unexpected token "\\" \(1:0\)/);
-  t.throws(() => Lexer.all(String.raw`\r`), /LexerError: \[Source]: Unexpected token "\\" \(1:0\)/);
-  t.throws(() => Lexer.all(String.raw`\r\n`), /LexerError: \[Source]: Unexpected token "\\" \(1:0\)/);
+  const options = { throwSourceError: false };
+  const error = /Unexpected token """ \(1:0\)/;
+
+  t.throws(() => Lexer.all('"\n"', options), error);
+  t.throws(() => Lexer.all('"\r"', options), error);
+  t.throws(() => Lexer.all('"\r\n"', options), error);
   t.end();
 });

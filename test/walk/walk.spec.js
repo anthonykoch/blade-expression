@@ -16,7 +16,7 @@ test('walk Literal', t => {
   walk(ast, {
     Literal() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -31,7 +31,7 @@ test('walk Identifier', t => {
   walk(ast, {
     Identifier() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -46,7 +46,7 @@ test('walk SpreadElement', t => {
   walk(ast, {
     SpreadElement() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -61,7 +61,7 @@ test('walk ThisExpression', t => {
   walk(ast, {
     ThisExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -74,9 +74,9 @@ test('walk SequenceExpression', t => {
   const ast = parse(data);
 
   walk(ast, {
-    SequenceExpression(node) {
+    SequenceExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -90,12 +90,12 @@ test('walk Identifiers of SequenceExpression', t => {
   const expressions = [];
 
   walk(ast, {
-    SequenceExpression(node) {
+    SequenceExpression() {
       t.ok(true);
     },
     Identifier(node) {
       expressions.push(node);
-    }
+    },
   });
 
   t.deepEquals(expressions, [
@@ -103,14 +103,14 @@ test('walk Identifiers of SequenceExpression', t => {
       type: 'Identifier',
       name: 'hello',
       start: 0,
-      end: 5
+      end: 5,
     },
     {
       type: 'Identifier',
       name: 'user',
       start: 7,
-      end: 11
-    }
+      end: 11,
+    },
   ], 'Items are added in order');
 
   t.end();
@@ -125,7 +125,7 @@ test('walk NewExpression', t => {
   walk(ast, {
     NewExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -140,7 +140,7 @@ test('walk CallExpression', t => {
   walk(ast, {
     CallExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -155,7 +155,7 @@ test('walk MemberExpression', t => {
   walk(ast, {
     MemberExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -165,12 +165,12 @@ test('walk YieldExpression', t => {
   t.plan(1);
 
   const data = `yield user`;
-  const ast = parse(data, { context: { inGenerator: true }});
+  const ast = parse(data, { context: { inGenerator: true } });
 
   walk(ast, {
     YieldExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -185,7 +185,7 @@ test('walk ArrayExpression', t => {
   walk(ast, {
     ArrayExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -200,7 +200,7 @@ test('walk Property', t => {
   walk(ast, {
     Property() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -215,7 +215,7 @@ test('walk ObjectExpression', t => {
   walk(ast, {
     ObjectExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -230,7 +230,7 @@ test('walk UpdateExpression', t => {
   walk(ast, {
     UpdateExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -245,7 +245,7 @@ test('walk UnaryExpression', t => {
   walk(ast, {
     UnaryExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -260,7 +260,7 @@ test('walk LogicalExpression', t => {
   walk(ast, {
     LogicalExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -275,7 +275,7 @@ test('walk BinaryExpression', t => {
   walk(ast, {
     BinaryExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -290,7 +290,7 @@ test('walk ArrowExpression', t => {
   walk(ast, {
     ArrowExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -305,7 +305,7 @@ test('walk ConditionalExpression', t => {
   walk(ast, {
     ConditionalExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -320,7 +320,7 @@ test('walk AssignmentExpression', t => {
   walk(ast, {
     AssignmentExpression() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -335,7 +335,7 @@ test('walk ExpressionStatement', t => {
   walk(ast, {
     ExpressionStatement() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -350,7 +350,7 @@ test('walk Program', t => {
   walk(ast, {
     Program() {
       t.ok(true);
-    }
+    },
   });
 
   t.end();
@@ -363,101 +363,117 @@ test.skip('walk complex ast', t => {
   const data = `this.name = yield name, user.id * users[index] + new User()
           || isValid([...users], (item) => -item++) ? { name } : null`;
 
-  const ast = parse(data, {
-    context: { inGenerator: true }
-  });
+  const ast = parse(data, { context: { inGenerator: true } });
 
   const identifiers = [];
 
   walk(ast, {
 
-    Literal() {              // 1
+    Literal() {
       t.ok(true);
     },
 
-    Identifier(node) {           // 10
+    Identifier(node) {
       t.ok(true);
       identifiers.push(node.name);
     },
 
-    SpreadElement() {        // 1
+    SpreadElement() {
       t.ok(true);
     },
 
-    ThisExpression() {       // 1
+    ThisExpression() {
       t.ok(true);
     },
 
-    SequenceExpression() {   // 1
+    SequenceExpression() {
       t.ok(true);
     },
 
-    NewExpression() {        // 1
+    NewExpression() {
       t.ok(true);
     },
 
-    CallExpression() {       // 1
+    CallExpression() {
       t.ok(true);
     },
 
-    MemberExpression() {     // 2
+    MemberExpression() {
       t.ok(true);
     },
 
-    YieldExpression() {      // 1
+    YieldExpression() {
       t.ok(true);
     },
 
-    ArrayExpression() {      // 1
+    ArrayExpression() {
       t.ok(true);
     },
 
-    Property() {             // 1
+    Property() {
       t.ok(true);
     },
 
-    ObjectExpression() {     // 1
+    ObjectExpression() {
       t.ok(true);
     },
 
-    UpdateExpression() {     // 1
+    UpdateExpression() {
       t.ok(true);
     },
 
-    UnaryExpression() {      // 1
+    UnaryExpression() {
       t.ok(true);
     },
 
-    LogicalExpression() {    // 1
+    LogicalExpression() {
       t.ok(true);
     },
 
-    BinaryExpression() {        // 1
+    BinaryExpression() {
       t.ok(true);
     },
 
-    ArrowExpression() {         // 1
+    ArrowExpression() {
       t.ok(true);
     },
 
-    ConditionalExpression() {   // 1
+    ConditionalExpression() {
       t.ok(true);
     },
 
-    AssignmentExpression() {    // 1
+    AssignmentExpression() {
       t.ok(true);
     },
 
-    ExpressionStatement() {     // 1
+    ExpressionStatement() {
       t.ok(true);
     },
 
-    Program() {                 // 1
+    Program() {
       t.ok(true);
-    }
+    },
   });
 
-  t.deepEquals(identifiers, ['name', 'name', 'user', 'id', 'users', 'index', 'User', 'isValid', 'users', 'item', 'item', 'name', 'name']);
+  t.deepEquals(
+      identifiers,
+      // eslint-disable-next-line indent
+      [
+        'name',
+        'name',
+        'user',
+        'id',
+        'users',
+        'index',
+        'User',
+        'isValid',
+        'users',
+        'item',
+        'item',
+        'name',
+        'name',
+      ]
+    );
 
   t.end();
 });

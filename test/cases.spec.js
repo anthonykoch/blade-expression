@@ -1,9 +1,6 @@
 'use strict';
 
-const fs = require('fs');
 const path = require('path');
-
-const acorn = require('acorn');
 
 const compare = require('./compare');
 
@@ -22,69 +19,65 @@ function createLexerTransform(title, _Lexer, opts) {
     title,
     data({ data, header }) {
       const options = Object.assign({}, opts, header.options);
-      return _Lexer.all(data, options)
+
+      return _Lexer.all(data, options);
     },
     comparator({ comparator, header }) {
       const options = Object.assign({}, opts, header.options);
+
       return JSON.parse(comparator, options);
-    }
-  }
+    },
+  };
 }
 
 const lexopts = [
-  {
-    options: { throwSourceError: false }
-  }
+  { options: { throwSourceError: false } },
 ];
 
-lexopts.map(({ options: opts }) => {
+lexopts.forEach(({ options: opts }) => {
   const lexerTransforms = [
     createLexerTransform('Lexer - ', Lexer, opts),
-    // createLexerTransform('DistLexer - ', DistLexer, opts),
-    // createLexerTransform('DistMinLexer - ', DistMinLexer, opts),
+    createLexerTransform('DistLexer - ', DistLexer, opts),
+    createLexerTransform('DistMinLexer - ', DistMinLexer, opts),
   ];
 
-  lexerTransforms.map(transform => {
+  lexerTransforms.forEach(transform => {
     compare(path.join(__dirname, './cases/lexer/**/*'), {
       prefix: transform.title,
-      transform
+      transform,
     });
   });
 });
 
-function createParserTransform(title, _Parser, opts, header) {
+function createParserTransform(title, _Parser, opts) {
   return {
     title,
     data: ({ data, header }) => {
       const options = Object.assign({}, opts, header.options);
-      return _Parser.parse(data, options).body
+
+      return _Parser.parse(data, options).body;
     },
-    comparator({ comparator, header }) {
-      const options = Object.assign({}, opts, header.options);
+    comparator({ comparator }) {
       return JSON.parse(comparator);
-    }
-  }
+    },
+  };
 }
 
 const parseropts = [
-  {
-    options: {
-      throwSourceError: false
-    }
-  }
+  { options: { throwSourceError: false } },
 ];
 
-parseropts.map(({ options: opts }) => {
+parseropts.forEach(({ options: opts }) => {
   const parserTransforms = [
     createParserTransform('Parser - ', Parser, opts),
-    // createParserTransform('DistParser - ', DistParser, opts),
-    // createParserTransform('DistMinParser - ', DistMinParser, opts),
+    createParserTransform('DistParser - ', DistParser, opts),
+    createParserTransform('DistMinParser - ', DistMinParser, opts),
   ];
 
-  parserTransforms.map(transform => {
+  parserTransforms.forEach(transform => {
     compare(path.join(__dirname, './cases/parser/**/*'), {
       prefix: transform.title,
-      transform
+      transform,
     });
   });
 });

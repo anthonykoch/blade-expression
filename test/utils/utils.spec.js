@@ -4,8 +4,8 @@ const test = require('tape');
 
 const { createSourceError } = require('../../lib/utils');
 
-test(`utils.createSourceError - points to the line`, t => {
-  const data = `\nJim\nBob\nDan\n`;
+test('utils.createSourceError - points to the line', t => {
+  const data = '\nJim\nBob\nDan\n';
 
   const expected =
 `[Source]:
@@ -16,8 +16,9 @@ test(`utils.createSourceError - points to the line`, t => {
 
   const err = createSourceError({
     name: 'ParserError',
+    message: '',
     line: 1,
-    source: data
+    source: data,
   });
 
   const actual = err.message;
@@ -26,14 +27,15 @@ test(`utils.createSourceError - points to the line`, t => {
   t.end();
 });
 
-test(`utils.createSourceError - no source message if line is not passed`, t => {
+test('utils.createSourceError - no source message when showSource is false', t => {
   const data = '';
   const expected = `That'll be the day`;
 
   const err = createSourceError({
     name: 'ParserError',
     message: expected,
-    source: data
+    source: data,
+    showSource: false,
   });
 
   const actual = err.message;
@@ -42,8 +44,8 @@ test(`utils.createSourceError - no source message if line is not passed`, t => {
   t.end();
 });
 
-test(`utils.createSourceError - single line source`, t => {
-  const data = `Jim`;
+test('utils.createSourceError - single line source', t => {
+  const data = 'Jim';
 
   const expected =
 `[Source]: That'll be the day
@@ -53,7 +55,7 @@ test(`utils.createSourceError - single line source`, t => {
     name: 'ParserError',
     message: `That'll be the day`,
     line: 1,
-    source: data
+    source: data,
   });
 
   const actual = err.message;
@@ -63,7 +65,7 @@ test(`utils.createSourceError - single line source`, t => {
 });
 
 test(`utils.createSourceError - single line source with negative line`, t => {
-  const data = `Jim`;
+  const data = 'Jim';
 
   const expected =
 `[Source]: That'll be the day
@@ -73,7 +75,7 @@ test(`utils.createSourceError - single line source with negative line`, t => {
     name: 'ParserError',
     message: `That'll be the day`,
     line: -1,
-    source: data
+    source: data,
   });
 
   const actual = err.message;
@@ -82,8 +84,8 @@ test(`utils.createSourceError - single line source with negative line`, t => {
   t.end();
 });
 
-test(`utils.createSourceError - minimum line number is enforced`, t => {
-  const data = `\nJim\nBob\nDan\n`;
+test('utils.createSourceError - minimum line number is enforced', t => {
+  const data = '\nJim\nBob\nDan\n';
 
   const expected =
 `[Source]: That'll be the day
@@ -96,7 +98,7 @@ test(`utils.createSourceError - minimum line number is enforced`, t => {
     name: 'ParserError',
     message: `That'll be the day`,
     line: -1,
-    source: data
+    source: data,
   });
 
   const actual = err.message;
@@ -105,8 +107,8 @@ test(`utils.createSourceError - minimum line number is enforced`, t => {
   t.end();
 });
 
-test(`utils.createSourceError - maximum line number is enforced`, t => {
-  const data = `\nJim\nBob\nDan\n`;
+test('utils.createSourceError - maximum line number is enforced', t => {
+  const data = '\nJim\nBob\nDan\n';
 
   const expected =
 `[Source]: That'll be the day
@@ -119,7 +121,7 @@ test(`utils.createSourceError - maximum line number is enforced`, t => {
     name: 'ParserError',
     message: `That'll be the day`,
     line: 100,
-    source: data
+    source: data,
   });
 
   const actual = err.message;
@@ -128,8 +130,8 @@ test(`utils.createSourceError - maximum line number is enforced`, t => {
   t.end();
 });
 
-test(`utils.createSourceError - maximum line number is enforced with single line source`, t => {
-  const data = `Jim`;
+test('utils.createSourceError - maximum line number is enforced with single line source', t => {
+  const data = 'Jim';
 
   const expected =
 `[Source]: That'll be the day
@@ -139,16 +141,17 @@ test(`utils.createSourceError - maximum line number is enforced with single line
     name: 'ParserError',
     message: `That'll be the day`,
     line: 100,
-    source: data
+    source: data,
   });
 
   const actual = err.message;
+
   t.equal(actual, expected, 'negative line');
   t.end();
 });
 
-test(`utils.createSourceError - shows filename when passed`, t => {
-  const data = `\nJim\nBob\nDan\n`;
+test('utils.createSourceError - shows filename when passed', t => {
+  const data = '\nJim\nBob\nDan\n';
 
   const expected =
 `amigos.txt: That'll be the day
@@ -162,7 +165,7 @@ test(`utils.createSourceError - shows filename when passed`, t => {
     message: `That'll be the day`,
     filename: 'amigos.txt',
     line: 1,
-    source: data
+    source: data,
   });
 
   const actual = err.message;

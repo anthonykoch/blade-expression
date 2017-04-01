@@ -1,6 +1,7 @@
 .personal
 coverage/
 build/
+lint/
 
 # Created by https://www.gitignore.io/api/sublimetext,node
 
