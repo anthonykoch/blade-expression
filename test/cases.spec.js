@@ -5,14 +5,7 @@ const path = require('path');
 const compare = require('./compare');
 
 const Parser = require('../lib/parser');
-const DistParser = require('../dist/bladeexp.js');
-const DistMinParser = require('../dist/bladeexp.min.js');
-
 const Lexer = require('../lib/lexer');
-const DistLexer = require('../dist/bladeexp.js').Lexer;
-const DistMinLexer = require('../dist/bladeexp.min.js').Lexer;
-
-// Lexer transforms
 
 function createLexerTransform(title, _Lexer, opts) {
   return {
@@ -37,8 +30,6 @@ const lexopts = [
 lexopts.forEach(({ options: opts }) => {
   const lexerTransforms = [
     createLexerTransform('Lexer - ', Lexer, opts),
-    createLexerTransform('DistLexer - ', DistLexer, opts),
-    createLexerTransform('DistMinLexer - ', DistMinLexer, opts),
   ];
 
   lexerTransforms.forEach(transform => {
@@ -70,8 +61,6 @@ const parseropts = [
 parseropts.forEach(({ options: opts }) => {
   const parserTransforms = [
     createParserTransform('Parser - ', Parser, opts),
-    createParserTransform('DistParser - ', DistParser, opts),
-    createParserTransform('DistMinParser - ', DistMinParser, opts),
   ];
 
   parserTransforms.forEach(transform => {
