@@ -4,7 +4,7 @@ description: spread eval
 options:
   context:
     strict: true
-    inGenerator: true
+    generator: true
 ---
 
 { "line": 1, "column": 4, "message": "Unexpected eval or arguments in strict mode (1:4)"}

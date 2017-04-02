@@ -165,7 +165,7 @@ test('walk YieldExpression', t => {
   t.plan(1);
 
   const data = `yield user`;
-  const ast = parse(data, { context: { inGenerator: true } });
+  const ast = parse(data, { context: { generator: true } });
 
   walk(ast, {
     YieldExpression() {
@@ -363,7 +363,7 @@ test.skip('walk complex ast', t => {
   const data = `this.name = yield name, user.id * users[index] + new User()
           || isValid([...users], (item) => -item++) ? { name } : null`;
 
-  const ast = parse(data, { context: { inGenerator: true } });
+  const ast = parse(data, { context: { generator: true } });
 
   const identifiers = [];
 

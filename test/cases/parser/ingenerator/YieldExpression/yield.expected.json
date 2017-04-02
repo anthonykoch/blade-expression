@@ -3,7 +3,7 @@ name: YieldExpression
 description: parses yield
 options:
   context:
-    inGenerator: true
+    generator: true
 ---
 
 [
