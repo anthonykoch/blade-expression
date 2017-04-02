@@ -1,22 +1,23 @@
 
-# blade-expression
+# jsexpr
 
 A parser for JavaScript expressions created according to the [ES6 specification](http://www.ecma-international.org/ecma-262/6.0/#sec-expressions). The AST nodes are modeled after the [SpiderMonkey Parser spec](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Parser_API) aside from how locations are stored.
 
+Some expressions are not supported or have not yet been added. See [supported expressions.](#supported-expressions)
+
 # Size
 
-Weighs in at `26KB` minified and `8.5 kB` gzipped.
-
+Weighs in at `~26KB` minified and `~8kB` gzipped.
 
 # Usage
 
-The usage is pretty straightforward. For more information on the API, see [the docs](/docs/API.md).
+See the [parser options](#api).
 
 ```js
-const Parser = require('./blade-expression');
+const Parser = require('./jsexpr');
 
 // Creating a parser object
-const parser = Parser.create(data, options);
+const parser = new Parser(data, options);
 const ast = parser.parse();
 
 // Shortcut
@@ -27,10 +28,10 @@ const ast = Parser.parse(data, options);
 You can also require the lexer.
 
 ```js
-const Lexer = require('./blade-expression/lexer');
+const Lexer = require('./jsexpr/lexer');
 
 // Token types may be required also
-const { TokenNumericLiteral } = require('./blade-expression/constants/tokens');
+const { NumericLiteral } = require('./jsexpr/constants/tokens');
 
 // Consume all tokens
 const tokens = Lexer.all(data, options);
@@ -115,10 +116,146 @@ The parsing is done as if the data passed has been wrapped in parens, thus causi
  There's no point in supporting these either since these are only allowed inside functions, which are not supported.
 
 
-## Todo
+## API
 
-- Change `null` to type `TYPE_NULL` and `true` and `false` to `TYPE_BOOLEAN` instead of being `TYPE_KEYWORD` keywords.
+### Parser
 
-- Figure out why minified version is throwing errors
+#### .parse(data, options)
 
-- Add raw values to primary expressions
+Returns an AST of the expression that was passed. This is a shortcut to having to create a parser and call the `parse` function on it.
+
+```js
+const Parser = require('./jsexpr');
+
+const ast = Parser.parse('delete user.name', {
+  context: {
+    strict: true
+  }
+});
+```
+
+#### data
+
+Type: `String`
+
+The expression to be parsed.
+
+
+#### options
+
+Type: `Object`
+
+The options passed affect how the data is parsed and lexed.
+
+```js
+// These are all options and their defaults
+const options = {
+  throwSourceError: true,
+  consumeLeast: false,
+  allowDelimited: true,
+  context: {
+    strict: false,
+    generator: false
+  }
+};
+
+const ast = Parser.parse(data, options);
+```
+
+#### options.throwSourceError
+
+Type: `Boolean` Default: `false`
+
+Whether or not to throw an error that points to which line and column the error occured.
+
+#### options.consumeLeast
+
+Type: `Boolean` Default: `false`
+
+If set to true, the parser will not error when it encouters two primary expressions not joined by a binary operator. The parser will still error when it finds an invalid expression.
+
+You can check if there are remaining expressions through a parser's hasMore property. Each subsequent call to parser.parse() will return the next expression.
+
+```js
+// None of these will throw an error when consumeLeast is true
+[] 123 // fine
+user 'hello' new User // still fine
+
+// The ast for the new expression would be returned first. If parsed
+// is called again, the delete expression will be returned;
+new Session() delete user.name
+
+// However, these will still error when consumeLeast is true
+// because they are not valid expressions
+user +
+//   ^ Unexpected end of input
+
+delete for
+//     ^ Unexpected token "for"
+```
+
+#### options.allowDelimited
+
+Type: `Boolean` Default: `true`
+
+Whether or not to allow expressions to be delimited by semicolons. e.g.
+
+```
+a + b; x - y;
+```
+
+If false, an error will be thrown when encountering a semicolon.
+
+#### options.context.strict
+
+Type: `Boolean` Default: `false`
+
+Whether or not the code should be parsed in strict mode.
+
+#### options.context.generator
+
+Type: `Boolean` Default: `false`
+
+Wether or not the expression being parsed should be considered as an expression inside of a generator function.
+
+### Parser instance
+
+#### .parse(data, options)
+
+Uses the same options as [`Parser.parse`](/#user-content-parsedata-options).
+
+```js
+const parser = new Parser(data, options);
+const ast = parser.parse();
+```
+
+
+### Lexer
+
+#### .all(data, options)
+
+#### data
+
+Type: `String`
+
+The data to lex.
+
+Returns all tokens for a given string.
+
+### Lexer instance
+
+#### .nextToken()
+
+Return: `Object|null`
+
+Returns the next token from the lexer, or `null` if there are no more tokens to be found. This will not throw an error no matter how many times you call it after it returns `null`.
+
+#### .lookahead(index)
+
+Return: `Object|null`
+
+#### times
+
+Type: `Number`
+
+Lexes tokens up to `index` and returns the token at `index` or null if there is no token that is found. Throws an error if the index is less than 1.
