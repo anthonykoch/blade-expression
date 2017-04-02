@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  server: ['coverage/lcov-report'],
+  server: ['./'],
   files: ['coverage/lcov-report/**/*.{html,css}'],
   port: 4000,
   ui: {
