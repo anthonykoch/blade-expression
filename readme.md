@@ -36,7 +36,7 @@ const { TokenNumericLiteral } = require('./blade-expression/constants/tokens');
 const tokens = Lexer.all(data, options);
 
 // Consume token by token
-const lexer = Lexer.create(data, options);
+const lexer = new Lexer(data, options);
 lexer.nextToken();
 
 // Consume all tokens if in an ES6 environment

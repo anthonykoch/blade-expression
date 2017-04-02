@@ -6,7 +6,7 @@ const Lexer = require('../../lib/lexer');
 
 test('Lexer - reduces input when using non-sticky regex', t => {
   const data = 'name + greeting';
-  const lexer = Lexer.create(data);
+  const lexer = new Lexer(data);
 
   lexer.nextToken();
   t.notEqual(lexer.input, data);
@@ -14,28 +14,28 @@ test('Lexer - reduces input when using non-sticky regex', t => {
 });
 
 test('Lexer - strips BOM', t => {
-  t.equals(Lexer.create('\uFEFFhello').input, 'hello');
+  t.equals(new Lexer('\uFEFFhello').input, 'hello');
   t.notEquals(
-      Lexer.create('hello\uFEFF'),
+      new Lexer('hello\uFEFF'),
       'hello\uFEFF',
       'does not remove BOM '
     );
   t.end();
 });
 
-test('Lexer.create - returns an object', t => {
+test('Lexer - with new returns an object', t => {
   const data = 'name + greeting';
-  const lexer = Lexer.create(data);
+  const lexer = new Lexer(data);
 
   t.ok(lexer);
   t.equal(typeof lexer, 'object');
-  t.throws(() => Lexer.create(), /of undefined/);
+  t.throws(() => new Lexer(), /of undefined/);
   t.end();
 });
 
 test('lexer.nextToken', t => {
   const data = 'name + greeting';
-  const lexer = Lexer.create(data);
+  const lexer = new Lexer(data);
 
   t.equals(lexer.nextToken().value, 'name',     'returns first token');
   t.equals(lexer.nextToken().value, '+',        'returns second token');
@@ -47,7 +47,7 @@ test('lexer.nextToken', t => {
 
 test('lexer.skipWhitespace', t => {
   const data = '     name     +     greeting     ';
-  const lexer = Lexer.create(data);
+  const lexer = new Lexer(data);
 
   lexer.skipWhitespace();
   t.equals(lexer.position, 5, 'skips whitespace');
@@ -56,7 +56,7 @@ test('lexer.skipWhitespace', t => {
 
 test('lexer.lookahead', t => {
   const data = '     name     +     greeting     ';
-  const lexer = Lexer.create(data);
+  const lexer = new Lexer(data);
 
   t.equal(lexer.lookahead(3).value, 'greeting', 'lookahead token');
   t.equal(lexer.lookahead(4), null, 'null token');
@@ -69,7 +69,7 @@ test('lexer.lookahead', t => {
   t.throws(() => lexer.lookahead(0), /Lookahead index must be more than 0/);
 
   t.equals(
-    Lexer.create('apple juice').lookahead(1).value,
+    new Lexer('apple juice').lookahead(1).value,
     'apple',
     'first lookahead returns first token');
 
@@ -78,7 +78,7 @@ test('lexer.lookahead', t => {
 
 test('lexer.peek', t => {
   const data = '     name     +     greeting     ';
-  const lexer = Lexer.create(data);
+  const lexer = new Lexer(data);
 
   t.equal(lexer.peek().value, 'name', 'peek token');
 
@@ -96,7 +96,7 @@ test('lexer.peek', t => {
 
 test('lexer.peek', t => {
   const data = '     name     +     greeting     ';
-  const lexer = Lexer.create(data);
+  const lexer = new Lexer(data);
 
   t.throws(() => lexer.error('Ya dun'), /Ya dun/, 'lexer throws');
   t.end();
