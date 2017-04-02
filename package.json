@@ -28,7 +28,6 @@
   "author": "anthonykoch",
   "license": "MIT",
   "dependencies": {
-    "object-assign": "4.1.x",
     "pad-start": "1.0.x",
     "repeat-string": "1.5.x"
   },
