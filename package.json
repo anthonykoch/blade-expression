@@ -11,12 +11,12 @@
     "test": "node \"./test\" | tap-spec || exit 0",
     "test-diff": "node \"./test\" | tap-diff || exit 0",
     "build:regex": "node ./regex.js > lib/constants/regex.js",
-    "build:package": "babel ./lib --out-dir build/package",
+    "build:package": "npm run build:regex && babel ./lib --out-dir build/package",
     "build:split": "npm run build:regex && webpack --config webpack.config.split.js",
-    "build:js": "webpack --config webpack.config.js",
+    "build:js": "npm run build:regex && webpack --config webpack.config.js",
     "build": "npm run build:regex && npm run build:package && npm run build:js && npm run build:split",
     "watch:js": "npm run build:js -- --watch",
-    "minify": "bash bin/minify.sh",
+    "minify": "npm run clean && npm run build:js && babili dist/bladeexp.js > dist/bladeexp.min.js",
     "cov": "npm run minify && istanbul cover ./test/index.js -i lib/**/*.js"
   },
   "repository": {
