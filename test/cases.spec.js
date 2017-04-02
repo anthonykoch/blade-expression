@@ -46,7 +46,8 @@ function createParserTransform(title, _Parser, opts) {
     data: ({ data, header }) => {
       const options = Object.assign({}, opts, header.options);
 
-      return _Parser.parse(data, options).body;
+      console.log(new Parser(data, options).parse().body);
+      return new Parser(data, options).parse().body;
     },
     comparator({ comparator }) {
       return JSON.parse(comparator);

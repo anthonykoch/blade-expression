@@ -14,17 +14,14 @@ test('Parser.parse', t => {
   t.end();
 });
 
-test('Parser.create', t => {
-  const parser = Parser.create(`'Hello'`);
-
-  t.equals(typeof parser, 'object');
-  t.throws(() => Parser.create(), /of undefined/, 'create throws without passing a string');
+test('Parser - returns an as', t => {
+  t.equals(typeof new Parser(`'Hello'`), 'object');
   t.end();
 });
 
 test('parser.parse', t => {
   const data = 'Hello';
-  const parser = Parser.create(data);
+  const parser = new Parser(data);
   const ast = parser.parse();
 
   t.equals(ast.type, 'Program', 'returns an ast');
@@ -33,7 +30,7 @@ test('parser.parse', t => {
 
 test('parser.nextToken', t => {
   const data = 'user';
-  const parser = Parser.create(data);
+  const parser = new Parser(data);
   const token = {
     type: TokenIdentifier,
     value: data,
@@ -49,7 +46,7 @@ test('parser.nextToken', t => {
 
 test('parser.peek', t => {
   const data = 'user';
-  const parser = Parser.create(data);
+  const parser = new Parser(data);
 
   const token = {
     type: TokenIdentifier,
@@ -66,7 +63,7 @@ test('parser.peek', t => {
 
 test('parser.ensure', t => {
   const data = `'Hello ' + user.name + 'my name is ' + name`;
-  const parser = Parser.create(data);
+  const parser = new Parser(data);
 
   t.deepEquals(parser.ensure(3), {
     type: TokenIdentifier,
@@ -85,7 +82,7 @@ test('parser.ensure', t => {
 
 test('parser.expect', t => {
   const data = `'Hello ' + user.name + 'my name is ' + name`;
-  const parser = Parser.create(data);
+  const parser = new Parser(data);
 
   parser.nextToken();
   parser.nextToken();
@@ -106,7 +103,7 @@ test('parser.expect', t => {
 
 test('parser.peek', t => {
   const data = 'user.name';
-  const parser = Parser.create(data);
+  const parser = new Parser(data);
 
   t.deepEquals(parser.peek().value, 'user', 'peek returns next token');
 
@@ -124,7 +121,7 @@ test('parser.peek', t => {
 
 test('parser.match', t => {
   const data = 'user.name';
-  const parser = Parser.create(data);
+  const parser = new Parser(data);
 
   t.ok(parser.match('user'), 'matches identifier');
 
@@ -138,7 +135,7 @@ test('parser.match', t => {
 
 test('parser.source', t => {
   const data = 'user.name';
-  const parser = Parser.create(data);
+  const parser = new Parser(data);
 
   t.ok(parser.source === parser.lexer.source);
   t.ok(data === parser.lexer.source);
@@ -147,7 +144,7 @@ test('parser.source', t => {
 });
 
 test('parser.allowDelimited parses expressions with semicolons betwixt', t => {
-  const parser = Parser.create('user.name;123', { allowDelimited: true });
+  const parser = new Parser('user.name;123', { allowDelimited: true });
   const first = parser.parse();
 
   t.ok(parser.hasMore, 'has more');
@@ -162,7 +159,7 @@ test('parser.allowDelimited parses expressions with semicolons betwixt', t => {
 });
 
 test('parser.consumeLeast', t => {
-  const parser = Parser.create('user.name 123', { consumeLeast: true });
+  const parser = new Parser('user.name 123', { consumeLeast: true });
   const first = parser.parse();
 
   t.ok(parser.hasMore, 'has more');
@@ -177,7 +174,7 @@ test('parser.consumeLeast', t => {
 });
 
 test('parser - newlines between', t => {
-  const parser = Parser.create('user.name\n123');
+  const parser = new Parser('user.name\n123');
   const first = parser.parse();
 
   t.ok(parser.hasMore, 'has more');
