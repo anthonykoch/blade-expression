@@ -13,7 +13,7 @@
     "webpack": "webpack --config webpack.config.js",
     "build:regex": "node ./regex.js > lib/constants/regex.js",
     "build:package": "npm run build:regex && babel ./lib --out-dir build/package",
-    "build:js": "rm -f dist/*.js && npm run build:regex && npm run webpack",
+    "build:js": "rm -f dist/*.js && npm run build:regex && npm run webpack && npm run minify",
     "build": "npm run build:regex && npm run build:package && npm run build:js",
     "minify": "bash ./scripts/minify.sh",
     "cov": "npm run build:js && npm run minify && istanbul cover ./test/index.js -i lib/**/*.js"
