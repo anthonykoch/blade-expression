@@ -26,41 +26,41 @@ const regexify =
 const KEYWORDS = regexify(keywords);
 const PUNCTUATORS = regexify(punctuators);
 
-const _WhiteSpace             = `\\t\\v\\f \\xA0`;
-const WhiteSpace              = `[${_WhiteSpace}]`;
-const _LineTerminator         = `\\n\\r`;
+const _WhiteSpace              = `\\t\\v\\f \\xA0`;
+const WhiteSpace               = `[${_WhiteSpace}]`;
+const _LineTerminator          = `\\n\\r`;
 // const _LineTerminator         = `\\n\\r\\u2028\\u2029`;                    // SPEC
-const LineTerminator          = `[${_LineTerminator}]`;
-const LineTerminatorSequence  = `(?:\\r\\n|[\\r\\n])`;
+const LineTerminator           = `[${_LineTerminator}]`;
+const LineTerminatorSequence   = `(?:\\r\\n|[\\r\\n])`;
 // const LineTerminatorSequence  = `(?:[\\n\\u2028\\u2029]|\\r\\n|[\\r\\n])`; // SPEC
 
-const Keyword    = `(?:${KEYWORDS})`;
-const Punctuator = `(?:${PUNCTUATORS})`;
+const Keyword                  = `(?:${KEYWORDS})`;
+const Punctuator               = `(?:${PUNCTUATORS})`;
 
 // Will turning on /u break any othr regex?
-const _SourceCharacter = `\\s\\S`;
-const SourceCharacter  = `[\\s\\S]`;
+const _SourceCharacter         = `\\s\\S`;
+const SourceCharacter          = `[\\s\\S]`;
 
-const ZWNJ             = '\\u200D';
-const ZWJ              = '\\u200C';
+const ZWNJ                     = '\\u200D';
+const ZWJ                      = '\\u200C';
 
-const HexDigit             = `[0-9a-fA-F]`
-const HexDigits            = `${HexDigit}+`;
-const HexIntegerLiteral    = `(?:0x${HexDigits}|0X${HexDigits})`;
+const HexDigit                 = `[0-9a-fA-F]`
+const HexDigits                = `${HexDigit}+`;
+const HexIntegerLiteral        = `(?:0x${HexDigits}|0X${HexDigits})`;
 
-const OctalDigit           = `[0-7]`;
-const OctalDigits          = `${OctalDigit}+`;
-const OctalIntegerLiteral  = `(?:0[oO]${OctalDigits})`;
-// const OctalIntegerLiteral  = `(?:0o${OctalDigits}|0O${OctalDigits})`;   // SPEC
+const OctalDigit               = `[0-7]`;
+const OctalDigits              = `${OctalDigit}+`;
+const OctalIntegerLiteral      = `(?:0[oO]${OctalDigits})`;
+// const OctalIntegerLiteral   = `(?:0o${OctalDigits}|0O${OctalDigits})`;   // SPEC
 
-const BinaryDigit          = `[01]`;
-const BinaryDigits         = `${BinaryDigit}+`;
-const BinaryIntegerLiteral = `(?:0[bB]${BinaryDigits})`;
-// const BinaryIntegerLiteral = `(?:0b${BinaryDigits}|0B${BinaryDigits})`; // SPEC
+const BinaryDigit              = `[01]`;
+const BinaryDigits             = `${BinaryDigit}+`;
+const BinaryIntegerLiteral     = `(?:0[bB]${BinaryDigits})`;
+// const BinaryIntegerLiteral  = `(?:0b${BinaryDigits}|0B${BinaryDigits})`; // SPEC
 
-const _DecimalDigit        = `0-9`;
-const DecimalDigit         = `[${_DecimalDigit}]`;
-const DecimalDigits        = `${DecimalDigit}+`;
+const _DecimalDigit            = `0-9`;
+const DecimalDigit             = `[${_DecimalDigit}]`;
+const DecimalDigits            = `${DecimalDigit}+`;
 
 const NonZeroDigit             = `[1-9]`;
 const SignedInteger            = `(?:[-+]${DecimalDigits})`;
@@ -68,8 +68,7 @@ const ExponentIndicator        = `[eE]`;
 const ExponentPart             = `${ExponentIndicator}${SignedInteger}`;
 
 const DecimalIntegerLiteral    = `(?:0|${NonZeroDigit}(?:${DecimalDigits})?)`;
-const DecimalLiteral           =
-	`(?:${DecimalIntegerLiteral}\\.(?:${DecimalDigits})?|\\.${DecimalDigits}|${DecimalIntegerLiteral})(?:${ExponentPart})?`;
+const DecimalLiteral           = `(?:${DecimalIntegerLiteral}\\.(?:${DecimalDigits})?|\\.${DecimalDigits}|${DecimalIntegerLiteral})(?:${ExponentPart})?`;
 
 const Hex4Digits               = `${HexDigit}{4}`;
 const UnicodeEscapeSequence    = `(?:u${Hex4Digits}|u\\{${Hex4Digits}\\})`;
@@ -82,10 +81,10 @@ const LineContinuation         = `\\\\${LineTerminatorSequence}`;
 
 const EscapeSequence           = `(?:${CharacterEscapeSequence}|${HexEscapeSequence}|${UnicodeEscapeSequence})`;
 
-const DoubleStringCharacter          = `(?:[^"\\\\${_LineTerminator}]|\\\\${EscapeSequence}|${LineContinuation})`;
-const SingleStringCharacter          = `(?:[^'\\\\${_LineTerminator}]|\\\\${EscapeSequence}|${LineContinuation})`;
-const DoubleStringCharacters         = `(?:\\\\${EscapeSequence}|${DoubleStringCharacter}|${LineContinuation})+`;
-const SingleStringCharacters         = `(?:\\\\${EscapeSequence}|${SingleStringCharacter}|${LineContinuation})+`;
+const DoubleStringCharacter    = `(?:[^"\\\\${_LineTerminator}]|\\\\${EscapeSequence}|${LineContinuation})`;
+const SingleStringCharacter    = `(?:[^'\\\\${_LineTerminator}]|\\\\${EscapeSequence}|${LineContinuation})`;
+const DoubleStringCharacters   = `(?:\\\\${EscapeSequence}|${DoubleStringCharacter}|${LineContinuation})+`;
+const SingleStringCharacters   = `(?:\\\\${EscapeSequence}|${SingleStringCharacter}|${LineContinuation})+`;
 
 const TemplateCharacter        =
 	`(?:\\$(?!\\{)|\\\\${EscapeSequence}|${LineContinuation}|${LineTerminatorSequence}|[^\`\\\\$${_LineTerminator}])`;
@@ -98,43 +97,48 @@ const TemplateHead             = `\`(?:${TemplateCharacters})?\\$\\{`;
 const NoSubstitutionTemplate   = `\`(?:${TemplateCharacters})?\``;
 const Template                 = `(?:${NoSubstitutionTemplate}|${TemplateHead})`;
 
+
+
 // NOTE: Might be better performance to have two separate
 //       regexes for single and double quote string
 // const StringLiteral   = `(?:("|')(?:${StringCharacters})?\\1)`;
-const StringLiteral   = `(?:'(?:${SingleStringCharacters})?')|(?:"(?:${DoubleStringCharacters})?")`;
+const StringLiteral       = `(?:'(?:${SingleStringCharacters})?')|(?:"(?:${DoubleStringCharacters})?")`;
+const StringSingleLiteral = `(?:'(?:${SingleStringCharacters})?')`;
+const StringDoubleLiteral = `(?:"(?:${DoubleStringCharacters})?")`;
 
-const NullLiteral     = `(?:null)`;
-const BooleanLiteral  = `(?:true|false)`
-const NumericLiteral  =
-	`(?:${HexIntegerLiteral}|${OctalIntegerLiteral}|${BinaryIntegerLiteral}|${DecimalLiteral})`;
+const NullLiteral         = `(?:null)`;
+const BooleanLiteral      = `(?:true|false)`
+const NumericLiteral      =`(?:${HexIntegerLiteral}|${OctalIntegerLiteral}|${BinaryIntegerLiteral}|${DecimalLiteral})`;
 
-const Literal = `(?:${NullLiteral}|${BooleanLiteral}|${NumericLiteral}|${StringLiteral})`;
+const Literal             = `(?:${NullLiteral}|${BooleanLiteral}|${NumericLiteral}|${StringLiteral})`;
 
-const ReservedWord    = `(?:${Keyword}|${NullLiteral}|${BooleanLiteral})`;
+const ReservedWord        = `(?:${Keyword}|${NullLiteral}|${BooleanLiteral})`;
 
 // FIXME: Doesn't support unicode
-const IdentifierStart  = `(?:[$_a-zA-Z]|\\\\${UnicodeEscapeSequence})`;
-const IdentifierPart   = `(?:[$_a-zA-Z0-9${ZWJ}${ZWNJ}]|\\\\${UnicodeEscapeSequence})`;
-const IdentifierName   = `(?:${IdentifierStart}${IdentifierPart}*)`;
+const IdentifierStart     = `(?:[$_a-zA-Z]|\\\\${UnicodeEscapeSequence})`;
+const IdentifierPart      = `(?:[$_a-zA-Z0-9${ZWJ}${ZWNJ}]|\\\\${UnicodeEscapeSequence})`;
+const IdentifierName      = `(?:${IdentifierStart}${IdentifierPart}*)`;
 
 const all = [
 	Punctuator,
 	Literal,
 	ReservedWord,
 	IdentifierName,
-].join('|')
+].join('|');
 
-exports.all            = new RegExp(`^(?:${all})`,            'u');
-exports.Punctuator     = new RegExp(`^(?:${Punctuator})`,     '');
-exports.Literal        = new RegExp(`^(?:${Literal})`,        'u');
-exports.StringLiteral  = new RegExp(`^(?:${StringLiteral})`,  'u');
-exports.NumericLiteral = new RegExp(`^(?:${NumericLiteral})`, 'u');
-exports.BooleanLiteral = new RegExp(`^(?:${BooleanLiteral})`, '');
-exports.NullLiteral    = new RegExp(`^(?:${NullLiteral})`,    '');
-exports.Template       = new RegExp(`^(?:${Template})`,       'u');
-exports.ReservedWord   = new RegExp(`^(?:${ReservedWord})`,   'u');
-exports.IdentifierName = new RegExp(`^(?:${IdentifierName})`, 'u');
-exports.IdentifierPart = new RegExp(`^(?:${IdentifierPart})`, 'u');
+exports.all                  = new RegExp(`^(?:${all})`,                 'u');
+exports.Punctuator           = new RegExp(`^(?:${Punctuator})`,          '');
+exports.Literal              = new RegExp(`^(?:${Literal})`,             'u');
+exports.StringLiteral        = new RegExp(`^(?:${StringLiteral})`,       'u');
+exports.StringSingleLiteral  = new RegExp(`^(?:${StringSingleLiteral})`, 'u');
+exports.StringDoubleLiteral  = new RegExp(`^(?:${StringDoubleLiteral})`, 'u');
+exports.NumericLiteral       = new RegExp(`^(?:${NumericLiteral})`,      'u');
+exports.BooleanLiteral       = new RegExp(`^(?:${BooleanLiteral})`,      '');
+exports.NullLiteral          = new RegExp(`^(?:${NullLiteral})`,         '');
+exports.Template             = new RegExp(`^(?:${Template})`,            'u');
+exports.ReservedWord         = new RegExp(`^(?:${ReservedWord})`,        'u');
+exports.IdentifierName       = new RegExp(`^(?:${IdentifierName})`,      'u');
+exports.IdentifierPart       = new RegExp(`^(?:${IdentifierPart})`,      'u');
 
 const template =
 `'use strict';
