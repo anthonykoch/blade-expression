@@ -1,0 +1,31 @@
+---
+name: AssignmentExpression - let identifier
+description: allows let as identifier
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 9,
+    "expression": {
+      "type": "AssignmentExpression",
+      "operator": "=",
+      "start": 0,
+      "end": 9,
+      "left": {
+        "type": "Identifier",
+        "name": "let",
+        "start": 0,
+        "end": 3
+      },
+      "right": {
+        "type": "Literal",
+        "value": "123",
+        "raw": 123,
+        "start": 6,
+        "end": 9
+      }
+    }
+  }
+]

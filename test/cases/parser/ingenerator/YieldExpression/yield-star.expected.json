@@ -1,0 +1,27 @@
+---
+name: YieldExpression - yield start identifier
+description: yield star identifier
+options:
+  context:
+    generator: true
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 12,
+    "expression": {
+      "type": "YieldExpression",
+      "delegates": true,
+      "start": 0,
+      "end": 12,
+      "argument": {
+        "type": "Identifier",
+        "name": "users",
+        "start": 7,
+        "end": 12
+      }
+    }
+  }
+]

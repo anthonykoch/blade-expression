@@ -1,0 +1,6 @@
+---
+name: new - meta property
+description: new meta properties are unsupported
+---
+
+{ "message": "Meta expressions are not supported (1:0)", "line": 1, "column": 0 }
