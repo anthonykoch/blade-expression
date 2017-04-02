@@ -1,34 +1,28 @@
 'use strict';
 
-const webpack = require('webpack');
 const path    = require('path');
 
-const config = module.exports = {
+module.exports = {
   entry: {
-    'app': './lib/index.js',
+    'Lexer':  './lib/lexer.js',
+    'Walk':   './lib/walk.js',
+    'JSExpr': './lib/index.js',
   },
-  resolve: {
-    alias: {}
-  },
-  output:
-  {
-    path: './dist',
-    filename: 'bladeexp.js',
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].js',
+    library: '[name]',
     libraryTarget: 'umd',
-    library: 'Bladexp'
   },
-  module:
-  {
-    noParse: [],
-    loaders: [
+  module: {
+    rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
+        exclude: [/node_modules/],
+        use: [
+          { loader: 'babel-loader' },
+        ],
+      },
     ],
   },
-  plugins: [
-    new webpack.optimize.DedupePlugin(),
-  ],
 };
