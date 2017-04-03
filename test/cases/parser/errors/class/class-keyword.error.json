@@ -1,0 +1,6 @@
+---
+name: Class - keyword only
+description: keyword only
+---
+
+{ "message": "\"class\" is not supported (1:0)", "line": 1, "column": 0 }

@@ -1,0 +1,6 @@
+---
+name: Function - keyword only
+description: keyword only
+---
+
+{ "message": "\"function\" is not supported (1:0)", "line": 1, "column": 0 }

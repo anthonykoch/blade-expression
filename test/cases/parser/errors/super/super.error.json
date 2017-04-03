@@ -3,4 +3,4 @@ name: super - expression
 description: super expression by itself
 ---
 
-{ "message": "\"super\" expressions are not supported (1:0)", "line": 1, "column": 0 }
+{ "message": "\"super\" is not supported (1:0)", "line": 1, "column": 0 }
