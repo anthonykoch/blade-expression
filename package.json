@@ -16,7 +16,7 @@
     "build:js": "rm -f dist/*.js && npm run build:regex && npm run webpack && npm run minify",
     "build": "npm run build:regex && npm run build:package && npm run build:js",
     "minify": "bash ./scripts/minify.sh",
-    "cov": "npm run build:js && npm run minify && istanbul cover ./test/index.js -i lib/**/*.js"
+    "cov": "npm run build:js && istanbul cover ./test/index.js -i lib/**/*.js"
   },
   "repository": {
     "type": "git"
