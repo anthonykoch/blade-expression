@@ -248,7 +248,7 @@ rules:
   array-callback-return: 2
   accessor-pairs: 2
   valid-typeof: 2
-  valid-jsdoc: 2
+  # valid-jsdoc: 2
   use-isnan: 2
   no-unsafe-negation: 2
   no-unsafe-finally: 2
