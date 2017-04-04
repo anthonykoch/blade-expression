@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     'Lexer':  './lib/lexer.js',
     'Walk':   './lib/walk.js',
-    'JSExpr': './lib/index.js',
+    'JSExpr': './lib/parser.js',
   },
   output: {
     path: path.join(__dirname, 'dist'),

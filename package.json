@@ -25,6 +25,7 @@
     "test": "test"
   },
   "author": "anthonykoch",
+  "main": "lib/parser.js",
   "license": "MIT",
   "dependencies": {
     "pad-start": "1.0.x",
