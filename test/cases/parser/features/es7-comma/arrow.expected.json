@@ -1,0 +1,39 @@
+---
+name: ES7 Comma - arrow function
+description: parses allows trailing comma in arrow function arguments
+options:
+  context:
+    es7_trailing_comma: true
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 14,
+    "expression": {
+      "type": "ArrowExpression",
+      "start": 0,
+      "end": 14,
+      "parameters": [
+        {
+          "type": "Identifier",
+          "name": "user",
+          "start": 1,
+          "end": 5
+        }
+      ],
+      "rest": null,
+      "defaults": null,
+      "expression": true,
+      "generator": false,
+      "body": {
+        "type": "Literal",
+        "value": "123",
+        "raw": 123,
+        "start": 11,
+        "end": 14
+      }
+    }
+  }
+]

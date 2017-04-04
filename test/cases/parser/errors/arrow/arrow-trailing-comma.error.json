@@ -1,0 +1,6 @@
+---
+name: arrow - trailing comma
+description: trailing comma is not allowed in arguments
+---
+
+{ "message": "Unexpected token \",\" (1:2)", "line": 1, "column": 2 }

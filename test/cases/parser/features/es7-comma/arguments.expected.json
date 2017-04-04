@@ -1,0 +1,34 @@
+---
+name: ES7 Comma - function
+description: parses allows trailing comma in function
+options:
+  context:
+    es7_trailing_comma: true
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 16,
+    "expression": {
+      "type": "CallExpression",
+      "callee": {
+        "type": "Identifier",
+        "name": "es7_trailing",
+        "start": 0,
+        "end": 12
+      },
+      "start": 0,
+      "end": 16,
+      "arguments": [
+        {
+          "type": "Identifier",
+          "name": "a",
+          "start": 13,
+          "end": 14
+        }
+      ]
+    }
+  }
+]

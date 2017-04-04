@@ -1,0 +1,6 @@
+---
+name: ES7 Comma - function
+description: parses allows trailing comma in function
+---
+
+{ "message": "Unexpected end of input" }

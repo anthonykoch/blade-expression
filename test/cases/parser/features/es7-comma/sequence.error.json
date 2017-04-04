@@ -1,0 +1,9 @@
+---
+name: ES7 Comma - sequence
+description: sequence expression trailing comma throws with es7 trailing comma
+options:
+  context:
+    es7_trailing_comma: true
+---
+
+{ "message": "Unexpected end of input" }
