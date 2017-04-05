@@ -1,13 +1,9 @@
 
 # jsexpr
 
-A parser for JavaScript expressions created according to the [ES6 specification](http://www.ecma-international.org/ecma-262/6.0/#sec-expressions). The AST nodes are modeled after the [SpiderMonkey Parser spec](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Parser_API) aside from how locations are stored.
+A parser for JavaScript expressions created according to the [ES6 specification](http://www.ecma-international.org/ecma-262/6.0/#sec-expressions). The AST nodes are modeled after the [SpiderMonkey Parser spec](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Parser_API) aside from how locations are stored. Weighs in at `~26KB` minified and `~8kB` gzipped.
 
 Some expressions are not supported or have not yet been added. See [supported expressions.](#supported-expressions)
-
-# Size
-
-Weighs in at `~26KB` minified and `~8kB` gzipped.
 
 # Usage
 
@@ -66,7 +62,6 @@ The parsing is done as if the data passed has been wrapped in parens, thus causi
 
  Expression                 | Example
 ----------------------------|--------------------------------
- ParenthesizedExpression    | `(user.name)`
  ArrowFunction (no block)   | `(user) => user.name`
  SequenceExpression         | `'hey there', 'hello'`
  AssignmentExpression       | `hello = 123`
@@ -77,15 +72,15 @@ The parsing is done as if the data passed has been wrapped in parens, thus causi
  RelationalExpression       | `user !== undefined`
  UnaryExpression            | `-usersIndex` or `delete user.name`
  UpdateExpression           | `++userIndex` or `userIndex--`
- NewExpression              | `new Person('Randall')` or `new Person`
- CallExpression             | `sayHello('tomylittle', ...['friend'])`
- MemberExpression           | `user.name` or `user['name' + hello]`
+ NewExpression              | `new Person()`
+ CallExpression             | `getProducts()`
+ MemberExpression           | `user.name` or `user['name']`
  ObjectExpression           | `{ age: 20, name }`
- ArrayExpression            | `['Jim',,,'Bob', ...otherList]`
+ ArrayExpression            | `['Jim','Bob',]`
  SpreadElement              | `[...usersList]`
  BooleanLiteral             | `true` or `false`
  NullLiteral                | `null`
- StringLiteral              | `"Hello"`
+ StringLiteral              | `"Hello"` or `'Hello'`
  DecimalLiteral             | `42` or `4.2` or `42e+12`
  BinaryLiteral              | `0b01`
  HexLiteral                 | `0x01`
@@ -253,9 +248,3 @@ Returns the next token from the lexer, or `null` if there are no more tokens to 
 #### .lookahead(index)
 
 Return: `Object|null`
-
-#### times
-
-Type: `Number`
-
-Lexes tokens up to `index` and returns the token at `index` or null if there is no token that is found. Throws an error if the index is less than 1.
