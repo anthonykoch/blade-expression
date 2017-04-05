@@ -2,8 +2,7 @@
 
 const test = require('tape');
 
-const { TokenIdentifier } = require('../../lib/constants/tokens');
-
+const Token = require('../../lib/constants/tokens');
 const Parser = require('../../lib/parser');
 
 test('Parser.parse', t => {
@@ -32,7 +31,7 @@ test('parser.nextToken', t => {
   const data = 'user';
   const parser = new Parser(data);
   const token = {
-    type: TokenIdentifier,
+    type: Token.Identifier,
     value: data,
     line: 1,
     column: 0,
@@ -49,7 +48,7 @@ test('parser.peek', t => {
   const parser = new Parser(data);
 
   const token = {
-    type: TokenIdentifier,
+    type: Token.Identifier,
     value: data,
     line: 1,
     column: 0,
@@ -66,7 +65,7 @@ test('parser.ensure', t => {
   const parser = new Parser(data);
 
   t.deepEquals(parser.ensure(3), {
-    type: TokenIdentifier,
+    type: Token.Identifier,
     value: 'user',
     line: 1,
     column: 11,
@@ -88,7 +87,7 @@ test('parser.expect', t => {
   parser.nextToken();
 
   t.deepEquals(parser.expect('user'), {
-    type: TokenIdentifier,
+    type: Token.Identifier,
     value: 'user',
     line: 1,
     column: 11,
