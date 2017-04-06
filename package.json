@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "jsexpr",
+  "name": "jsparse",
   "version": "1.0.0",
   "description": "A parser for JavaScript expressions",
   "main": "lib/index.js",

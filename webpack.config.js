@@ -4,9 +4,9 @@ const path    = require('path');
 
 module.exports = {
   entry: {
-    'lexer':  './lib/lexer.js',
-    'walk':   './lib/walk.js',
-    'jsexpr': './lib/parser.js',
+    lexer:   './lib/lexer.js',
+    walk:    './lib/walk.js',
+    jsparse: './lib/parser.js',
   },
   output: {
     path: path.join(__dirname, 'dist'),

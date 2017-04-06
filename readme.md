@@ -1,5 +1,5 @@
 
-# jsexpr
+# JSParse
 
 A parser for JavaScript expressions created according to the [ES6 specification](http://www.ecma-international.org/ecma-262/6.0/#sec-expressions). The AST nodes are modeled after the [SpiderMonkey Parser spec](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Parser_API) aside from how locations are stored. Weighs in at `~26KB` minified and `~8kB` gzipped.
 
@@ -10,7 +10,7 @@ Some expressions are not supported or have not yet been added. See [supported ex
 See the [parser options](#api).
 
 ```js
-const Parser = require('./jsexpr');
+const Parser = require('./jsparse');
 
 // Creating a parser object
 const parser = new Parser(data, options);
@@ -24,10 +24,10 @@ const ast = Parser.parse(data, options);
 You can also require the lexer.
 
 ```js
-const Lexer = require('./jsexpr/lexer');
+const Lexer = require('./jsparse/lexer');
 
 // Token types may be required also
-const { NumericLiteral } = require('./jsexpr/constants/tokens');
+const { NumericLiteral } = require('./jsparse/constants/tokens');
 
 // Consume all tokens
 const tokens = Lexer.all(data, options);
@@ -120,7 +120,7 @@ The parsing is done as if the data passed has been wrapped in parens, thus causi
 Returns an AST of the expression that was passed. This is a shortcut to having to create a parser and call the `parse` function on it.
 
 ```js
-const Parser = require('./jsexpr');
+const Parser = require('./jsparse');
 
 const ast = Parser.parse('delete user.name', {
   context: {
