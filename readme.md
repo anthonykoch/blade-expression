@@ -81,9 +81,7 @@ The parsing is done as if the data passed has been wrapped in parens, thus causi
  BooleanLiteral             | `true` or `false`
  NullLiteral                | `null`
  StringLiteral              | `"Hello"` or `'Hello'`
- DecimalLiteral             | `42` or `4.2` or `42e+12`
- BinaryLiteral              | `0b01`
- HexLiteral                 | `0x01`
+ DecimalLiteral             | `42` or `0b01` or `0x01`
  Identifier                 | `hello`
 
 
