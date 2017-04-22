@@ -40,8 +40,6 @@ lexopts.forEach(({ options: opts }) => {
   });
 });
 
-return
-
 function createParserTransform(title, _Parser, opts) {
   return {
     title,

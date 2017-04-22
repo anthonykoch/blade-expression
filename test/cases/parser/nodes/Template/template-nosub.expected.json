@@ -1,0 +1,18 @@
+---
+name: Template
+description: template
+skip: true
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 5,
+    "expression": {
+      "type": "ThisExpression",
+      "start": 1,
+      "end": 5
+    }
+  }
+]
