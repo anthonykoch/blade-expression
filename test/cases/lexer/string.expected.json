@@ -1,6 +1,6 @@
 ---
 name: string literal
-description: string literal parses with newlines, returns, carriage returns, unicode characters, and unicode sequences.
+description: simple string literal
 ---
 
 [

@@ -1,0 +1,8 @@
+---
+name: Template - head
+description: with and without characters (ascii and unicode)
+---
+
+[
+  {"type": 9, "value": "`I give 👍👍${", "line": 1, "column": 0, "start": 0, "end": 14 }
+]

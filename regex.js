@@ -13,9 +13,10 @@
 
 const er = require('escape-string-regexp');
 
-const { keywords,
-		punctuators } = require('./lib/constants/grammar');
-
+const {
+    keywords,
+    punctuators
+  } = require('./lib/constants/grammar');
 
 const regexify =
     items => Object.keys(items)
@@ -86,59 +87,45 @@ const SingleStringCharacter    = `(?:[^'\\\\${_LineTerminator}]|\\\\${EscapeSequ
 const DoubleStringCharacters   = `(?:\\\\${EscapeSequence}|${DoubleStringCharacter}|${LineContinuation})+`;
 const SingleStringCharacters   = `(?:\\\\${EscapeSequence}|${SingleStringCharacter}|${LineContinuation})+`;
 
-const TemplateCharacter        =
-	`(?:\\$(?!\\{)|\\\\${EscapeSequence}|${LineContinuation}|${LineTerminatorSequence}|[^\`\\\\$${_LineTerminator}])`;
+const StringLiteral            = `(?:'(?:${SingleStringCharacters})?')|(?:"(?:${DoubleStringCharacters})?")`;
+const StringSingleLiteral      = `(?:'(?:${SingleStringCharacters})?')`;
+const StringDoubleLiteral      = `(?:"(?:${DoubleStringCharacters})?")`;
 
-const TemplateCharacters       = `${TemplateCharacter}+`;
-const TemplateTail             = `\\}(?:${TemplateCharacters})?\``;
-const TemplateMiddle           = `\\}(?:${TemplateCharacters})\\$\\{`;
-const TemplateSubstitutionTail = `(?:${TemplateMiddle}|${TemplateTail})`
-const TemplateHead             = `\`(?:${TemplateCharacters})?\\$\\{`;
-const NoSubstitutionTemplate   = `\`(?:${TemplateCharacters})?\``;
-const Template                 = `(?:${NoSubstitutionTemplate}|${TemplateHead})`;
+const NullLiteral              = `(?:null)`;
+const BooleanLiteral           = `(?:true|false)`
+const NumericLiteral           = `(?:${HexIntegerLiteral}|${OctalIntegerLiteral}|${BinaryIntegerLiteral}|${DecimalLiteral})`;
 
+const Literal                  = `(?:${NullLiteral}|${BooleanLiteral}|${NumericLiteral}|${StringLiteral})`;
 
-
-// NOTE: Might be better performance to have two separate
-//       regexes for single and double quote string
-// const StringLiteral   = `(?:("|')(?:${StringCharacters})?\\1)`;
-const StringLiteral       = `(?:'(?:${SingleStringCharacters})?')|(?:"(?:${DoubleStringCharacters})?")`;
-const StringSingleLiteral = `(?:'(?:${SingleStringCharacters})?')`;
-const StringDoubleLiteral = `(?:"(?:${DoubleStringCharacters})?")`;
-
-const NullLiteral         = `(?:null)`;
-const BooleanLiteral      = `(?:true|false)`
-const NumericLiteral      =`(?:${HexIntegerLiteral}|${OctalIntegerLiteral}|${BinaryIntegerLiteral}|${DecimalLiteral})`;
-
-const Literal             = `(?:${NullLiteral}|${BooleanLiteral}|${NumericLiteral}|${StringLiteral})`;
-
-const ReservedWord        = `(?:${Keyword}|${NullLiteral}|${BooleanLiteral})`;
+const ReservedWord             = `(?:${Keyword}|${NullLiteral}|${BooleanLiteral})`;
 
 // FIXME: Doesn't support unicode
-const IdentifierStart     = `(?:[$_a-zA-Z]|\\\\${UnicodeEscapeSequence})`;
-const IdentifierPart      = `(?:[$_a-zA-Z0-9${ZWJ}${ZWNJ}]|\\\\${UnicodeEscapeSequence})`;
-const IdentifierName      = `(?:${IdentifierStart}${IdentifierPart}*)`;
+const IdentifierStart          = `(?:[$_a-zA-Z]|\\\\${UnicodeEscapeSequence})`;
+const IdentifierPart           = `(?:[$_a-zA-Z0-9${ZWJ}${ZWNJ}]|\\\\${UnicodeEscapeSequence})`;
+const IdentifierName           = `(?:${IdentifierStart}${IdentifierPart}*)`;
 
-const all = [
-	Punctuator,
-	Literal,
-	ReservedWord,
-	IdentifierName,
-].join('|');
+const TemplateSourceCharacter  = `(?:\\\\${EscapeSequence}|${LineContinuation}|${LineTerminatorSequence}|\\$(?!\\{)|[^$\`\\\\${_LineTerminator}])`;
+const TemplateCharacters       = `(?:${TemplateSourceCharacter})*?`;
+const TemplateHead             = `\`${TemplateCharacters}\\$\\{`;
+const TemplateMiddle           = `\\}${TemplateCharacters}\\$\\{`;
+const TemplateTail             = `\\}${TemplateCharacters}\``;
+const TemplateNoSub            = `\`${TemplateCharacters}\``;
 
-exports.all                  = new RegExp(`^(?:${all})`,                 'u');
-exports.Punctuator           = new RegExp(`^(?:${Punctuator})`,          '');
-exports.Literal              = new RegExp(`^(?:${Literal})`,             'u');
-exports.StringLiteral        = new RegExp(`^(?:${StringLiteral})`,       'u');
-exports.StringSingleLiteral  = new RegExp(`^(?:${StringSingleLiteral})`, 'u');
-exports.StringDoubleLiteral  = new RegExp(`^(?:${StringDoubleLiteral})`, 'u');
-exports.NumericLiteral       = new RegExp(`^(?:${NumericLiteral})`,      'u');
-exports.BooleanLiteral       = new RegExp(`^(?:${BooleanLiteral})`,      '');
-exports.NullLiteral          = new RegExp(`^(?:${NullLiteral})`,         '');
-exports.Template             = new RegExp(`^(?:${Template})`,            'u');
-exports.ReservedWord         = new RegExp(`^(?:${ReservedWord})`,        'u');
-exports.IdentifierName       = new RegExp(`^(?:${IdentifierName})`,      'u');
-exports.IdentifierPart       = new RegExp(`^(?:${IdentifierPart})`,      'u');
+const wrap = (source, flags) => new RegExp(`^(?:${source})`, flags);
+
+exports.Punctuator     = wrap(Punctuator,      '');
+exports.Literal        = wrap(Literal,        'u');
+exports.StringLiteral  = wrap(StringLiteral,  'u');
+exports.NumericLiteral = wrap(NumericLiteral, 'u');
+exports.BooleanLiteral = wrap(BooleanLiteral,  '');
+exports.NullLiteral    = wrap(NullLiteral,     '');
+exports.TemplateHead   = wrap(TemplateHead,   'u');
+exports.TemplateMiddle = wrap(TemplateMiddle, 'u');
+exports.TemplateTail   = wrap(TemplateTail,   'u');
+exports.TemplateNoSub  = wrap(TemplateNoSub,  'u');
+exports.ReservedWord   = wrap(ReservedWord,   'u');
+exports.IdentifierName = wrap(IdentifierName, 'u');
+exports.IdentifierPart = wrap(IdentifierPart, 'u');
 
 const template =
 `'use strict';
@@ -159,8 +146,15 @@ exports.ReservedWord    = ${exports.ReservedWord};
 
 exports.IdentifierName  = ${exports.IdentifierName};
 
+exports.TemplateHead    = ${exports.TemplateHead};
+
+exports.TemplateMiddle  = ${exports.TemplateMiddle};
+
+exports.TemplateTail    = ${exports.TemplateTail};
+
+exports.TemplateNoSub   = ${exports.TemplateNoSub};
+
+
 `;
 
-// exports.Template        = ${exports.Template};
-
-console.log(template)
+console.log(template);
