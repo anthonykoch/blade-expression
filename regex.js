@@ -13,16 +13,68 @@
 
 const er = require('escape-string-regexp');
 
-const {
-    keywords,
-    punctuators
-  } = require('./lib/constants/grammar');
+const { keywords } = require('./lib/constants/grammar');
 
 const regexify =
     items => Object.keys(items)
             .sort((a, b) => b.length - a.length)
             .map(er)
             .join('|');
+
+const punctuators = {
+  '{':    true,
+  '(':    true,
+  ')':    true,
+  '[':    true,
+  ']':    true,
+  '.':    true,
+  '...':  true,
+  ';':    true,
+  ',':    true,
+  '<':    true,
+  '>':    true,
+  '<=':   true,
+  '>=':   true,
+  '==':   true,
+  '!=':   true,
+  '===':  true,
+  '!==':  true,
+  '+':    true,
+  '-':    true,
+  '*':    true,
+  '**':   true,
+  '%':    true,
+  '++':   true,
+  '--':   true,
+  '<<':   true,
+  '>>':   true,
+  '>>>':  true,
+  '&':    true,
+  '|':    true,
+  '^':    true,
+  '!':    true,
+  '~':    true,
+  '&&':   true,
+  '||':   true,
+  '?':    true,
+  ':':    true,
+  '=':    true,
+  '+=':   true,
+  '-=':   true,
+  '*=':   true,
+  '**=':  true,
+  '%=':   true,
+  '<<=':  true,
+  '>>=':  true,
+  '>>>=': true,
+  '&=':   true,
+  '|=':   true,
+  '^=':   true,
+  '=>':   true,
+  '/':    true,
+  '/=':   true,
+  '}':    true,
+};
 
 const KEYWORDS = regexify(keywords);
 const PUNCTUATORS = regexify(punctuators);
@@ -124,7 +176,7 @@ exports.TemplateMiddle = wrap(TemplateMiddle, 'u');
 exports.TemplateTail   = wrap(TemplateTail,   'u');
 exports.TemplateNoSub  = wrap(TemplateNoSub,  'u');
 exports.ReservedWord   = wrap(ReservedWord,   'u');
-exports.IdentifierName = wrap(IdentifierName, 'u');
+exports.Identifier     = wrap(IdentifierName, 'u');
 exports.IdentifierPart = wrap(IdentifierPart, 'u');
 
 const template =
@@ -144,7 +196,7 @@ exports.BooleanLiteral  = ${exports.BooleanLiteral};
 
 exports.ReservedWord    = ${exports.ReservedWord};
 
-exports.IdentifierName  = ${exports.IdentifierName};
+exports.Identifier      = ${exports.Identifier};
 
 exports.TemplateHead    = ${exports.TemplateHead};
 
@@ -153,8 +205,6 @@ exports.TemplateMiddle  = ${exports.TemplateMiddle};
 exports.TemplateTail    = ${exports.TemplateTail};
 
 exports.TemplateNoSub   = ${exports.TemplateNoSub};
-
-
 `;
 
 console.log(template);
