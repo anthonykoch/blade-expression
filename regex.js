@@ -188,14 +188,6 @@ exports.Punctuator      = ${exports.Punctuator};
 
 exports.NumericLiteral  = ${exports.NumericLiteral};
 
-exports.StringLiteral   = ${exports.StringLiteral};
-
-// exports.NullLiteral     = ${exports.NullLiteral};
-
-// exports.BooleanLiteral  = ${exports.BooleanLiteral};
-
-// exports.ReservedWord    = ${exports.ReservedWord};
-
 exports.Identifier      = ${exports.Identifier};
 
 exports.TemplateHead    = ${exports.TemplateHead};
@@ -206,5 +198,13 @@ exports.TemplateTail    = ${exports.TemplateTail};
 
 exports.TemplateNoSub   = ${exports.TemplateNoSub};
 `;
+
+// exports.StringLiteral   = ${exports.StringLiteral};
+
+// exports.NullLiteral     = ${exports.NullLiteral};
+
+// exports.BooleanLiteral  = ${exports.BooleanLiteral};
+
+// exports.ReservedWord    = ${exports.ReservedWord};
 
 console.log(template);

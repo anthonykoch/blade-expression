@@ -29,8 +29,8 @@ description: parses object literal
           },
           "value": {
             "type": "Literal",
-            "value": "'Hello'",
-            "raw": "Hello",
+            "raw": "'Hello'",
+            "value": "Hello",
             "start": 12,
             "end": 19
           }

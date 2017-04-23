@@ -1,6 +1,6 @@
 ---
-name: string literal
-description: simple string literal
+name: string literal - simple
+description: simple double and single quote strings
 ---
 
 [

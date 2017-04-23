@@ -15,15 +15,15 @@ description: parses call expression with arguments
       "arguments": [
         {
           "type": "Literal",
-          "value": "123",
-          "raw": 123,
+          "raw": "123",
+          "value": 123,
           "start": 6,
           "end": 9
         },
         {
           "type": "Literal",
-          "value": "'people'",
-          "raw": "people",
+          "raw": "'people'",
+          "value": "people",
           "start": 11,
           "end": 19
         }

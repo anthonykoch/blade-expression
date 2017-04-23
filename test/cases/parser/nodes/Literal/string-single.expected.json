@@ -10,8 +10,8 @@ description: parses single quote
     "end": 7,
     "expression": {
       "type": "Literal",
-      "value": "'Hello'",
-      "raw": "Hello",
+      "raw": "'Hello'",
+      "value": "Hello",
       "start": 0,
       "end": 7
     }

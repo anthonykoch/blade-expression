@@ -19,8 +19,8 @@ description: parses parenthesized arrow function with implicit number return
       "generator": false,
       "body": {
         "type": "Literal",
-        "value": "123",
-        "raw": 123,
+        "raw": "123",
+        "value": 123,
         "start": 6,
         "end": 9
       }

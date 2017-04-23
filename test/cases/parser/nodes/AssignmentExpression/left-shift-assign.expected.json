@@ -21,8 +21,8 @@ description: parses simple left shift assignment
       },
       "right": {
         "type": "Literal",
-        "value": "123",
-        "raw": 123,
+        "raw": "123",
+        "value": 123,
         "start": 14,
         "end": 17
       }

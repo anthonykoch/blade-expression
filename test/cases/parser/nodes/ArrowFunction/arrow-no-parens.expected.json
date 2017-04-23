@@ -26,8 +26,8 @@ description: parses non-parenthesized arrow expression
       "generator": false,
       "body": {
         "type": "Literal",
-        "value": "123",
-        "raw": 123,
+        "raw": "123",
+        "value": 123,
         "start": 8,
         "end": 11
       }

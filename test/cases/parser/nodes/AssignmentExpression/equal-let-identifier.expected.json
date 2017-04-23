@@ -21,8 +21,8 @@ description: allows let as identifier
       },
       "right": {
         "type": "Literal",
-        "value": "123",
-        "raw": 123,
+        "raw": "123",
+        "value": 123,
         "start": 6,
         "end": 9
       }

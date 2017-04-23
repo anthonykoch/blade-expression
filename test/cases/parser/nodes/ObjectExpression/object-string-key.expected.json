@@ -23,8 +23,8 @@ description: parses object literal with binary expression inside computed proper
           "end": 17,
           "key": {
             "type": "Literal",
-            "value": "\"person\"",
-            "raw": "person",
+            "raw": "\"person\"",
+            "value": "person",
             "start": 2,
             "end": 10
           },

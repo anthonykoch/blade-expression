@@ -1,9 +1,0 @@
----
-name: Template - no substitution
-description: with and without characters (ascii and unicode)
----
-
-[
-  {"type": 10, "value": "``",           "line": 1, "column": 0, "start": 0, "end": 2 },
-  {"type": 10, "value": "`I give 👍👍`", "line": 2, "column": 0, "start": 3, "end": 16 }
-]

@@ -29,8 +29,8 @@ options:
       "generator": false,
       "body": {
         "type": "Literal",
-        "value": "123",
-        "raw": 123,
+        "raw": "123",
+        "value": 123,
         "start": 11,
         "end": 14
       }

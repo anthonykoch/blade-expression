@@ -15,8 +15,8 @@ description: parses call on string literal
       "arguments": [],
       "callee": {
         "type": "Literal",
-        "value": "'Hello'",
-        "raw": "Hello",
+        "raw": "'Hello'",
+        "value": "Hello",
         "start": 0,
         "end": 7
       }

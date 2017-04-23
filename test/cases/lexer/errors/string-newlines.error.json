@@ -1,0 +1,6 @@
+---
+name: String - newlines
+description: string with newlines throws lex error
+---
+
+{ "column": 0, "line": 1, "message": "Unexpected token (1:0)" }

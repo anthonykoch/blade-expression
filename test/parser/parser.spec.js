@@ -151,7 +151,7 @@ test('parser.allowDelimited parses expressions with semicolons betwixt', t => {
   const last = parser.parse();
 
   t.equals(first.body[0].expression.object.name, 'user');
-  t.equals(last.body[0].expression.value, '123');
+  t.equals(last.body[0].expression.raw, '123');
   t.notOk(parser.hasMore, 'has no more');
 
   t.end();
@@ -166,7 +166,7 @@ test('parser.consumeLeast', t => {
   const last = parser.parse();
 
   t.equals(first.body[0].expression.object.name, 'user', 'identifier');
-  t.equals(last.body[0].expression.value, '123', 'number');
+  t.equals(last.body[0].expression.raw, '123', 'number');
   t.notOk(parser.hasMore, 'has no more');
 
   t.end();
@@ -181,7 +181,7 @@ test('parser - newlines between', t => {
   const last = parser.parse();
 
   t.equals(first.body[0].expression.object.name, 'user', 'identifier');
-  t.equals(last.body[0].expression.value, '123', 'number');
+  t.equals(last.body[0].expression.raw, '123', 'number');
   t.notOk(parser.hasMore, 'has no more');
 
   t.end();

@@ -13,8 +13,8 @@ description: nested templates
           "expressions": [
             {
               "type": "Literal",
-              "value": "'lul'",
-              "raw": "lul",
+              "raw": "'lul'",
+              "value": "lul",
               "start": 16,
               "end": 21
             }

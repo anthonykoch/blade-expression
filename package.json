@@ -8,15 +8,16 @@
     "size": "gzip -fk dist/*.js && wc --bytes dist/*",
     "lint": "eslint lib/**/*.js test/**/*.spec.js test/*.js webpack.config.js",
     "serve": "browser-sync start -c .browsersync.js",
-    "clean": "rm -rf dist/*.* build",
+    "clean:dist": "rm -rf dist/*.*",
+    "clean:build": "rm -rf build/*.* build/*/",
     "test": "node \"./test\" | tap-spec || exit 0",
     "webpack": "webpack --config webpack.config.js",
     "build:regex": "node ./regex.js > lib/constants/regex.js",
     "build:package": "npm run build:regex && babel ./lib --out-dir build/package",
-    "build:js": "rm -f dist/*.js && npm run build:regex && npm run webpack && npm run minify",
+    "build:js": "npm run clean:dist && npm run build:regex && npm run webpack && npm run minify",
     "build": "npm run build:regex && npm run build:package && npm run build:js && npm run size",
     "minify": "bash ./scripts/minify.sh",
-    "cov": "npm run build:js && istanbul cover ./test/index.js -i lib/**/*.js"
+    "cov": "istanbul cover ./test/index.js -i lib/**/*.js"
   },
   "repository": {
     "type": "git"

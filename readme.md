@@ -1,7 +1,7 @@
 
 # JSParse
 
-A parser for JavaScript expressions created according to the [ES6 specification](http://www.ecma-international.org/ecma-262/6.0/#sec-expressions). The AST nodes are modeled after the [SpiderMonkey Parser spec](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Parser_API) aside from how locations are stored. Weighs in at `~26KB` minified and `~8kB` gzipped.
+A parser for ES5/ES6 JavaScript expressions. Weighs in at `~26KB` minified and `~8kB` gzipped.
 
 Some expressions are not supported or have not yet been added. See [supported expressions.](#supported-expressions)
 
@@ -45,6 +45,14 @@ for (let token of lexer) {
 
 # Important notes
 
+### Destructuring
+
+Destructuring patterns are parsed as their object, array, etc. counterpart and are not rewritten as a pattern. (This is todo).
+
+### Simple identifiers
+
+The regex for a valid JS identifier is quite large, so to keep things simple, identifiers may only contain unicode escape sequences and [$_a-zA-Z0-9] characters.
+
 ### Semantic errors
 
 Not all semantic errors (e.g. strict mode errors) have been coded into the parser yet.
@@ -86,8 +94,6 @@ The parsing is done as if the data passed has been wrapped in parens, thus causi
 
 
 ### No Support (for now)
-
-- Template strings
 
 - Regular Expressions
 
@@ -146,6 +152,7 @@ const options = {
   throwSourceError: true,
   consumeLeast: false,
   allowDelimited: true,
+  cook: true,
   context: {
     strict: false,
     generator: false
@@ -246,3 +253,11 @@ Returns the next token from the lexer, or `null` if there are no more tokens to 
 #### .lookahead(index)
 
 Return: `Object|null`
+
+
+
+### Todo
+
+- [ ] Change StringLiteral and Template to char by char reading
+- [ ] Remove raw values for strings
+

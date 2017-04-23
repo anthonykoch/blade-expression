@@ -20,15 +20,15 @@ description: parses member expression of call expression with arguments
         "arguments": [
           {
             "type": "Literal",
-            "value": "'Sally'",
-            "raw": "Sally",
+            "raw": "'Sally'",
+            "value": "Sally",
             "start": 11,
             "end": 18
           },
           {
             "type": "Literal",
-            "value": "'John'",
-            "raw": "John",
+            "raw": "'John'",
+            "value": "John",
             "start": 20,
             "end": 26
           }

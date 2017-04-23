@@ -10,8 +10,8 @@ description: parses numeric hex literal
     "end": 4,
     "expression": {
       "type": "Literal",
-      "value": "0x01",
-      "raw": 1,
+      "raw": "0x01",
+      "value": 1,
       "start": 0,
       "end": 4
     }
