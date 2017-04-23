@@ -190,11 +190,11 @@ exports.NumericLiteral  = ${exports.NumericLiteral};
 
 exports.StringLiteral   = ${exports.StringLiteral};
 
-exports.NullLiteral     = ${exports.NullLiteral};
+// exports.NullLiteral     = ${exports.NullLiteral};
 
-exports.BooleanLiteral  = ${exports.BooleanLiteral};
+// exports.BooleanLiteral  = ${exports.BooleanLiteral};
 
-exports.ReservedWord    = ${exports.ReservedWord};
+// exports.ReservedWord    = ${exports.ReservedWord};
 
 exports.Identifier      = ${exports.Identifier};
 

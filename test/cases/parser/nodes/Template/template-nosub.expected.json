@@ -1,18 +1,29 @@
 ---
 name: Template
 description: template
-skip: true
 ---
 
 [
   {
     "type": "ExpressionStatement",
     "start": 0,
-    "end": 5,
+    "end": 16,
     "expression": {
-      "type": "ThisExpression",
-      "start": 1,
-      "end": 5
+      "type": "TemplateLiteral",
+      "expressions": [],
+      "quasis": [
+        {
+          "type": "TemplateElement",
+          "value": {
+            "raw": "I ❤ you 👌👌👌"
+          },
+          "tail": true,
+          "start": 0,
+          "end": 16
+        }
+      ],
+      "start": 0,
+      "end": 16
     }
   }
 ]

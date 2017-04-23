@@ -1,0 +1,10 @@
+---
+name: es7 - exponent
+description: lexes es7 exponent
+options:
+  version: 7
+---
+
+[
+  { "type": 4, "value": "**", "line": 1, "column": 0, "start": 0, "end": 2 }
+]
