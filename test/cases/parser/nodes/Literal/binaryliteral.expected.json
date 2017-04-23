@@ -10,8 +10,8 @@ description: parses binary literal
     "end": 4,
     "expression": {
       "type": "Literal",
-      "value": "0b01",
-      "raw": 1,
+      "raw": "0b01",
+      "value": 1,
       "start": 0,
       "end": 4
     }

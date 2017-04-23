@@ -1,0 +1,29 @@
+---
+name: Template
+description: template
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 16,
+    "expression": {
+      "type": "TemplateLiteral",
+      "expressions": [],
+      "quasis": [
+        {
+          "type": "TemplateElement",
+          "value": {
+            "raw": "I ❤ you 👌👌👌"
+          },
+          "tail": true,
+          "start": 0,
+          "end": 16
+        }
+      ],
+      "start": 0,
+      "end": 16
+    }
+  }
+]

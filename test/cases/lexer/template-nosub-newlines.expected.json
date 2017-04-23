@@ -1,0 +1,9 @@
+---
+name: Template - no substitution
+description: nosub template with newlines
+---
+
+[
+  { "type": 10, "value": "`hello\\n\\n`", "line": 1, "column": 0, "start": 0, "end": 11  },
+  { "type": 0,  "value": "123",           "line": 2, "column": 0, "start": 12, "end": 15 }
+]

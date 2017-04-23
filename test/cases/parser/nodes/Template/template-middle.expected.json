@@ -1,0 +1,75 @@
+---
+name: Template
+description: template
+---
+
+[
+  {
+    "type": "ExpressionStatement",
+    "start": 0,
+    "end": 46,
+    "expression": {
+      "type": "TemplateLiteral",
+      "expressions": [
+        {
+          "type": "Identifier",
+          "name": "user",
+          "start": 12,
+          "end": 16
+        },
+        {
+          "type": "Identifier",
+          "name": "age",
+          "start": 25,
+          "end": 28
+        },
+        {
+          "type": "Identifier",
+          "name": "address",
+          "start": 31,
+          "end": 38
+        }
+      ],
+      "quasis": [
+        {
+          "type": "TemplateElement",
+          "value": {
+            "raw": "beginning"
+          },
+          "tail": false,
+          "start": 0,
+          "end": 12
+        },
+        {
+          "type": "TemplateElement",
+          "value": {
+            "raw": "middle"
+          },
+          "tail": false,
+          "start": 16,
+          "end": 25
+        },
+        {
+          "type": "TemplateElement",
+          "value": {
+            "raw": ""
+          },
+          "tail": false,
+          "start": 28,
+          "end": 31
+        },
+        {
+          "type": "TemplateElement",
+          "value": {
+            "raw": "ending"
+          },
+          "tail": true,
+          "start": 38,
+          "end": 46
+        }
+      ],
+      "start": 0,
+      "end": 46
+    }
+  }
+]

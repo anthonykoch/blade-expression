@@ -15,8 +15,8 @@ description: parses call on numeric literal
       "arguments": [],
       "callee": {
         "type": "Literal",
-        "value": "123",
-        "raw": 123,
+        "raw": "123",
+        "value": 123,
         "start": 0,
         "end": 3
       }

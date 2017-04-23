@@ -1,0 +1,12 @@
+---
+name: Template - nested templates
+description: templates nested inside each other
+---
+
+[
+  { "type": 9, "value": "`${", "line": 1, "column": 0,  "start": 0,  "end": 3 },
+  { "type": 9, "value": "`${", "line": 1, "column": 3,  "start": 3,  "end": 6 },
+  { "type": 0, "value": "123", "line": 1, "column": 6,  "start": 6,  "end": 9 },
+  { "type": 8, "value": "}`",  "line": 1, "column": 9,  "start": 9,  "end": 11 },
+  { "type": 8, "value": "}`",  "line": 1, "column": 11, "start": 11, "end": 13 }
+]

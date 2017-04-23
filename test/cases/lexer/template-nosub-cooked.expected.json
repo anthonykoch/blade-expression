@@ -1,0 +1,9 @@
+---
+name: Template - no substitution cooked
+description: no sub templated cooked
+skip: true
+---
+
+[
+  {"type": 10, "value": "`\b \f \n \r \t \u000b { a 💬   `", "line": 1, "column": 0, "start": 0, "end": 23 }
+]

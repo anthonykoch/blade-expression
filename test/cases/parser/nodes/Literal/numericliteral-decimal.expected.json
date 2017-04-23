@@ -10,8 +10,8 @@ description: parses float decimal literal
     "end": 7,
     "expression": {
       "type": "Literal",
-      "value": "123.123",
-      "raw": 123.123,
+      "raw": "123.123",
+      "value": 123.123,
       "start": 0,
       "end": 7
     }

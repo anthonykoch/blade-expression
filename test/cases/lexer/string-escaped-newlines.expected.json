@@ -1,0 +1,9 @@
+---
+name: string literal - escaped newlines
+description: double and single quote strings with escaped newlines
+---
+
+[
+  {"type": 1, "value": "'hello\\\n'", "line": 1, "column": 0, "start": 0, "end": 9 },
+  {"type": 1, "value": "\"hello\\\n\"", "line": 3, "column": 0, "start": 10, "end": 19 }
+]

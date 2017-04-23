@@ -105,10 +105,15 @@ test('lexer.peek', t => {
 test('Lexer - StringLiteral - line endings in string literals error', t => {
   // This can't be done with error cases because text editors transform line endings
   const options = { throwSourceError: false };
-  const error = /Unexpected token """ \(1:0\)/;
+  const error = //;
 
-  t.throws(() => Lexer.all('"\n"', options), error);
-  t.throws(() => Lexer.all('"\r"', options), error);
-  t.throws(() => Lexer.all('"\r\n"', options), error);
+  t.throws(() => Lexer.all('"\n"', options),   /Unexpected token \(1:0\)/);
+  t.throws(() => Lexer.all('"\r"', options),   /Unexpected token \(1:0\)/);
+  t.throws(() => Lexer.all('"\r\n"', options), /Unexpected token \(1:0\)/);
+  t.throws(() => Lexer.all(String.raw`"\
+    `,options), /Unterminated string literal \(1\:0\)/);
+  t.throws(() => Lexer.all(String.raw`'\
+    `,options), /Unterminated string literal \(1\:0\)/);
+
   t.end();
 });

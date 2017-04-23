@@ -2,174 +2,40 @@
 
 const test = require('tape');
 
-const { createSourceError } = require('../../lib/utils');
+const { cook, hexValue } = require('../../lib/utils');
 
-test('utils.createSourceError - points to the line', t => {
-  const data = '\nJim\nBob\nDan\n';
-
-  const expected =
-`[Source]:
-> 1 |\u0020
-  2 | Jim
-  3 | Bob
-  4 | Dan\n`;
-
-  const err = createSourceError({
-    name: 'ParserError',
-    message: '',
-    line: 1,
-    source: data,
-  });
-
-  const actual = err.message;
-
-  t.equal(actual, expected, 'line 1');
-  t.end();
-});
-
-test('utils.createSourceError - no source message when showSource is false', t => {
-  const data = '';
-  const expected = `That'll be the day`;
-
-  const err = createSourceError({
-    name: 'ParserError',
-    message: expected,
-    source: data,
-    showSource: false,
-  });
-
-  const actual = err.message;
-
-  t.equal(actual, expected, 'no line');
-  t.end();
-});
-
-test('utils.createSourceError - single line source', t => {
-  const data = 'Jim';
-
-  const expected =
-`[Source]: That'll be the day
-> 1 | Jim\n`;
-
-  const err = createSourceError({
-    name: 'ParserError',
-    message: `That'll be the day`,
-    line: 1,
-    source: data,
-  });
-
-  const actual = err.message;
-
-  t.equal(actual, expected, 'negative line');
-  t.end();
-});
-
-test(`utils.createSourceError - single line source with negative line`, t => {
-  const data = 'Jim';
-
-  const expected =
-`[Source]: That'll be the day
-> 1 | Jim\n`;
-
-  const err = createSourceError({
-    name: 'ParserError',
-    message: `That'll be the day`,
-    line: -1,
-    source: data,
-  });
-
-  const actual = err.message;
-
-  t.equal(actual, expected, 'negative line');
-  t.end();
-});
-
-test('utils.createSourceError - minimum line number is enforced', t => {
-  const data = '\nJim\nBob\nDan\n';
-
-  const expected =
-`[Source]: That'll be the day
-> 1 |\u0020
-  2 | Jim
-  3 | Bob
-  4 | Dan\n`;
-
-  const err = createSourceError({
-    name: 'ParserError',
-    message: `That'll be the day`,
-    line: -1,
-    source: data,
-  });
-
-  const actual = err.message;
-
-  t.equal(actual, expected, 'negative line');
-  t.end();
-});
-
-test('utils.createSourceError - maximum line number is enforced', t => {
-  const data = '\nJim\nBob\nDan\n';
-
-  const expected =
-`[Source]: That'll be the day
-  2 | Jim
-  3 | Bob
-  4 | Dan
-> 5 | \n`;
-
-  const err = createSourceError({
-    name: 'ParserError',
-    message: `That'll be the day`,
-    line: 100,
-    source: data,
-  });
-
-  const actual = err.message;
-
-  t.equal(actual, expected, 'negative line');
-  t.end();
-});
-
-test('utils.createSourceError - maximum line number is enforced with single line source', t => {
-  const data = 'Jim';
-
-  const expected =
-`[Source]: That'll be the day
-> 1 | Jim\n`;
-
-  const err = createSourceError({
-    name: 'ParserError',
-    message: `That'll be the day`,
-    line: 100,
-    source: data,
-  });
-
-  const actual = err.message;
-
-  t.equal(actual, expected, 'negative line');
-  t.end();
-});
-
-test('utils.createSourceError - shows filename when passed', t => {
-  const data = '\nJim\nBob\nDan\n';
-
-  const expected =
-`amigos.txt: That'll be the day
-> 1 |\u0020
-  2 | Jim
-  3 | Bob
-  4 | Dan\n`;
-
-  const err = createSourceError({
-    name: 'ParserError',
-    message: `That'll be the day`,
-    filename: 'amigos.txt',
-    line: 1,
-    source: data,
-  });
-
-  const actual = err.message;
-
-  t.equal(actual, expected, 'shows filename');
+test('awd', t => {
+  t.equals(cook('\\u0020'),     ' ',  'unicode escape space');
+  t.equals(cook('\\u{20}'),     ' ',  'code point escape space');
+  t.equals(cook('\\u{0020}'),   ' ',  'leading zero code point escape - space');
+  t.equals(cook('\\x20'),       ' ',  'hex escape - space');
+  t.equals(cook(`\\'`),         `'`,  'quote');
+  t.equals(cook('"'),           '"',  'quote');
+  t.equals(cook('\\\\'),        '\\', '\\\\');
+  t.equals(cook('\b'),          '\b', '\\b');
+  t.equals(cook('\f'),          '\f', '\\f');
+  t.equals(cook('\n'),          '\n', '\\n');
+  t.equals(cook('\r'),          '\r', '\\r');
+  t.equals(cook('\t'),          '\t', '\\t');
+  t.equals(cook('\v'),          '\v', '\\v');
+  t.equals(cook('\\{'),         '{',  'brace');
+  t.equals(cook('\\a'),         'a',  'char "a"');
+  t.equals(cook('\\u{1f4ac}'),  '💬',  'comment character')
+  t.equals(cook('\\u{10FFFF}'), '􏿿', 'max uncode escape char');
+  t.throws(() => cook('\\x'),          /Invalid hex escape sequence/);
+  t.throws(() => cook('\\x2'),         /Invalid hex escape sequence/);
+  t.throws(() => cook('\\xg'),         /Invalid hex escape sequence/);
+  t.throws(() => cook('\\u'),          /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u0'),         /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u01'),        /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u012'),       /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u012g'),      /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u{}'),        /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u{'),         /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u{feff'),     /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u{g}'),       /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u{ag}'),      /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u{1g}'),      /Invalid unicode escape sequence/);
+  t.throws(() => cook('\\u{110FFFF}'), /Invalid unicode code-point/);
   t.end();
 });

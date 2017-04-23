@@ -15,15 +15,15 @@ description: parses sequence expression
       "expressions": [
         {
           "type": "Literal",
-          "value": "123",
-          "raw": 123,
+          "raw": "123",
+          "value": 123,
           "start": 0,
           "end": 3
         },
         {
           "type": "Literal",
-          "value": "456",
-          "raw": 456,
+          "raw": "456",
+          "value": 456,
           "start": 5,
           "end": 8
         }

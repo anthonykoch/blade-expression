@@ -1,0 +1,6 @@
+---
+name: template - head non-terminated
+description: head non-terminated no tail
+---
+
+{ "message": "Unterminated template (1:0)", "line": 1, "column": 0 }

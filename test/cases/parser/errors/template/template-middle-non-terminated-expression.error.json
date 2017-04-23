@@ -1,0 +1,6 @@
+---
+name: template - middle non-terminated
+description: templte with middle, no tail
+---
+
+{ "message": "Unterminated template (1:0)", "line": 1, "column": 0 }

@@ -12,8 +12,8 @@ description: arrow only rest parameter
       "type": "ArrowExpression",
       "body": {
         "type": "Literal",
-        "value": "123",
-        "raw": 123,
+        "raw": "123",
+        "value": 123,
         "start": 13,
         "end": 16
       },

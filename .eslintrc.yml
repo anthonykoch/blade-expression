@@ -40,10 +40,6 @@ rules:
     - 2
     - before: true
       after: true
-  # arrow-body-style:
-  #   - 2
-  #   - as-needed
-  #   - requireReturnForObjectLiteral: false
   template-tag-spacing: [2, 'never']
   spaced-comment: [2, 'always']
   space-unary-ops:
@@ -194,7 +190,6 @@ rules:
   no-unmodified-loop-condition: 2
   no-throw-literal: 2
   no-sequences: 2
-  no-self-compare: 2
   no-self-assign: 2
   no-script-url: 2
   no-return-assign: 2

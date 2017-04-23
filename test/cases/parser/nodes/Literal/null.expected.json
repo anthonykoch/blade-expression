@@ -10,8 +10,8 @@ description: boolean
     "end": 4,
     "expression": {
       "type": "Literal",
-      "value": "null",
-      "raw": null,
+      "raw": "null",
+      "value": null,
       "start": 0,
       "end": 4
     }

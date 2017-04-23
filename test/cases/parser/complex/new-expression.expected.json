@@ -15,8 +15,8 @@ description: parses compless new expression
       "end": 86,
       "left": {
         "type": "Literal",
-        "value": "'Hello '",
-        "raw": "Hello ",
+        "raw": "'Hello '",
+        "value": "Hello ",
         "start": 0,
         "end": 8
       },
@@ -50,8 +50,8 @@ description: parses compless new expression
             "arguments": [
               {
                 "type": "Literal",
-                "value": "'James'",
-                "raw": "James",
+                "raw": "'James'",
+                "value": "James",
                 "start": 23,
                 "end": 30
               },
@@ -82,16 +82,16 @@ description: parses compless new expression
                         null,
                         {
                           "type": "Literal",
-                          "value": "'Some'",
-                          "raw": "Some",
+                          "raw": "'Some'",
+                          "value": "Some",
                           "start": 46,
                           "end": 52
                         },
                         null,
                         {
                           "type": "Literal",
-                          "value": "'People'",
-                          "raw": "People",
+                          "raw": "'People'",
+                          "value": "People",
                           "start": 55,
                           "end": 63
                         },
