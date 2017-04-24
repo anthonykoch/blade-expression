@@ -258,6 +258,4 @@ Return: `Object|null`
 
 ### Todo
 
-- [ ] Change StringLiteral and Template to char by char reading
-- [ ] Remove raw values for strings
-
+- [ ] Fix double start parsing as exponent operator in < ES7
